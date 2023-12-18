@@ -7,4 +7,136 @@
     <string name="unit6">Unidad 6</string>
     <string name="unit7">Unidad 7</string>
     <string name="unit8">Unidad 8</string>
+
+    <!--    Unidad 5 - KANJI-->
+    <string name="tabemono_k">食べ物</string>
+    <string name="nomimono_k">飲み物</string>
+    <string name="kudamono_k">果物</string>
+    <string name="yasumi_k">休み</string>
+    <string name="ryokou_k">旅行</string>
+    <string name="umi_k">海</string>
+    <string name="saafin_k">サーフィン</string>
+    <string name="omiyage_k">お土産</string>
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+
+    <!--    Unidad 5 - KANA-->
+    <string name="tabemono_h">たべもの</string>
+    <string name="nomimono_h">のみもの</string>
+    <string name="kudamono_h">くだもの</string>
+    <string name="yasumi_h">やすみ</string>
+    <string name="ryokou_h">りょこう</string>
+    <string name="umi_h">うみ</string>
+    <string name="saafin_h">サーフィン</string>
+    <string name="omiyage_h">おみやげ</string>
+
+    <!--    Unidad 7 - KANJI-->
+    <string name="kazoku_k">家族</string>
+    <string name="ojiisan_k">おじいさん</string>
+    <string name="obaasan_k">おばあさん</string>
+    <string name="oniisan_k">お兄さん</string>
+    <string name="oneesan_k">お姉さん</string>
+    <string name="chichi_k">父</string>
+    <string name="haha_k">母</string>
+    <string name="ani_k">兄</string>
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+    <!--    <string name="_k"></string>-->
+
+    <!--    Unidad 7 - KANA-->
+    <string name="kazoku_h">かぞく</string>
+    <string name="ojiisan_h">おじいさん</string>
+    <string name="obaasan_h">おばあさん</string>
+    <string name="oniisan_h">おにいさん</string>
+    <string name="oneesan_h">おねえさん</string>
+    <string name="chichi_h">ちち</string>
+    <string name="haha_h">はは</string>
+    <string name="ani_h">あに</string>
+
+    <string name="info">Info</string>
+    <string name="contact_dev">Contactar al desarrollador</string>
+    <string name="credits">Creditos</string>
+
+    <string name="developer">Desarrollador:</string>
+    <string name="developer_name">Cesar A. Osuna H.</string>
+    <string name="date">Fecha:</string>
+    <string name="date_value">Diciembre 2023</string>
+
+    <string name="menu_title">Tarjetas</string>
+    <string name="card_mode">Modo: </string>
 </resources>

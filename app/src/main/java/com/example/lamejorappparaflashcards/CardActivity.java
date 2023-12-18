@@ -67,6 +67,7 @@ public class CardActivity extends AppCompatActivity {
         int cardId;
         try {
             TextView f_text = findViewById(R.id.front);
+            TextView h_text = findViewById(R.id.front_h);
             TextView b_text = findViewById(R.id.back);
 
             Random ran = new Random();
@@ -77,16 +78,20 @@ public class CardActivity extends AppCompatActivity {
 
             used[cardId] = true;
 
-            Cursor cursor = db.query(table, new String[]{"F_TEXT", "B_TEXT"}, "_id = ?", new String[]{Integer.toString(cardId + 1)}, null, null, null);
+            Cursor cursor = db.query(table, new String[]{"F_TEXT", "K_TEXT", "B_TEXT"}, "_id = ?", new String[]{Integer.toString(cardId + 1)}, null, null, null);
 
             if (cursor.moveToFirst()) {
-                String nameText = cursor.getString(0);
-                String hpText = cursor.getString(1);
+                String frontText = cursor.getString(0);
+                String frontHText = cursor.getString(1);
+                String backText = cursor.getString(2);
 
-                f_text.setText(nameText);
+                System.out.println(frontText);
+                f_text.setText(frontText);
+                System.out.println(frontText);
+                h_text.setText(frontHText);
 
                 b_text.setVisibility(View.INVISIBLE);
-                b_text.setText(hpText);
+                b_text.setText(backText);
             }
             cursor.close();
 
@@ -98,7 +103,7 @@ public class CardActivity extends AppCompatActivity {
 
     private boolean allUsed(int size){
         for(int i = 0; i < size; i++){
-            if(used[i] == false){
+            if(!used[i]){
                 return false;
             }
         }

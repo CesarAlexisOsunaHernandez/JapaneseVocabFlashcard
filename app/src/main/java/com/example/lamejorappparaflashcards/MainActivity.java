@@ -50,6 +50,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent.putExtra("unit_table", "UNIT_SEVEN");
             startActivity(intent);
         }
+
+        if (id == R.id.message_dev){
+            intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            String uri = "whatsapp://send?phone=526643637206&text=";
+            intent.setData(Uri.parse(uri));
+            startActivity(intent);
+        }
+
+        if (id == R.id.credits){
+            intent = new Intent(this, CreditsActivity.class);
+            startActivity(intent);
+        }
 //        switch (id){
 //            case R.id.monsters:
 //                intent = new Intent(this, CardActivity.class);
@@ -86,10 +99,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed(){
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        setContentView(R.layout.activity_main_menu);
+        super.onBackPressed();
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
     }
 }
