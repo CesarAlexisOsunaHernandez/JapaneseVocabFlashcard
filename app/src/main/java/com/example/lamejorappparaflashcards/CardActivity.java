@@ -70,6 +70,8 @@ public class CardActivity extends AppCompatActivity {
             TextView h_text = findViewById(R.id.front_h);
             TextView b_text = findViewById(R.id.back);
 
+            h_text.setVisibility(View.VISIBLE);
+
             Random ran = new Random();
 
             do{
@@ -85,9 +87,9 @@ public class CardActivity extends AppCompatActivity {
                 String frontHText = cursor.getString(1);
                 String backText = cursor.getString(2);
 
-                System.out.println(frontText);
                 f_text.setText(frontText);
-                System.out.println(frontText);
+                if(frontHText.equals(frontText))
+                    h_text.setVisibility(View.INVISIBLE);
                 h_text.setText(frontHText);
 
                 b_text.setVisibility(View.INVISIBLE);

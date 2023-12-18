@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CardActivity"
-    android:onClick="manageCard">
+    tools:context=".CardActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -26,6 +25,26 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="36sp"
         android:text="@string/developer_name"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="48sp"
+        android:textStyle="italic"
+        android:text="@string/transcriber"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="36sp"
+        android:text="@string/transcriber_name_1"
         android:textStyle="italic" />
 
     <TextView
