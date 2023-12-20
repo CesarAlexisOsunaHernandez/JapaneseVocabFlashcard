@@ -2,18 +2,24 @@ package com.example.lamejorappparaflashcards;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.content.ClipData;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    private boolean espaToJapa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content_frame,fragment);
         ft.commit();
+
+        espaToJapa = false;
 
         setContentView(R.layout.activity_main_menu);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -37,18 +45,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(MenuItem item){
         int id = item.getItemId();
+        //ClipData.Item item = findViewById(R.id.card_mode);
         Intent intent;
 
         if (id == R.id.unit5){
             intent = new Intent(this, CardActivity.class);
+            intent.putExtra("E2J", espaToJapa);
             intent.putExtra("unit_table", "UNIT_FIVE");
             startActivity(intent);
         }
 
         if (id == R.id.unit7){
             intent = new Intent(this, CardActivity.class);
+            intent.putExtra("E2J", espaToJapa);
             intent.putExtra("unit_table", "UNIT_SEVEN");
             startActivity(intent);
+        }
+
+        if (id == R.id.card_mode){
+            Toast toast;
+            if (espaToJapa){
+                toast = Toast.makeText(this, "J -> E", Toast.LENGTH_SHORT);
+
+            }else{
+                toast = Toast.makeText(this, "E -> J", Toast.LENGTH_SHORT);
+            }
+            toast.show();
+            espaToJapa = !espaToJapa;
+            System.out.println(espaToJapa);
         }
 
         if (id == R.id.message_dev){

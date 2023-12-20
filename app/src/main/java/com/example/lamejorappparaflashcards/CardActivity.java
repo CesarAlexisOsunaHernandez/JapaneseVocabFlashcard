@@ -19,11 +19,12 @@ import java.util.Random;
 public class CardActivity extends AppCompatActivity {
     private Context context;
     private String Table;
+    private boolean E2J;
     private SQLiteOpenHelper databaseHelper;
     private SQLiteDatabase db;
 
     private int size;
-    private boolean used[];
+    private boolean[] used;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class CardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
         Table = (String) getIntent().getExtras().get("unit_table");
+        E2J = (boolean) getIntent().getExtras().get("E2J");
 
         databaseHelper = new DatabaseHelper(this);
 
@@ -51,9 +53,14 @@ public class CardActivity extends AppCompatActivity {
 
     public void manageCard(View view){
         TextView b_text = findViewById(R.id.back);
+        TextView f_text = findViewById(R.id.front);
+        TextView k_text = findViewById(R.id.front_h);
 
         if (b_text.getVisibility() == View.INVISIBLE){
             b_text.setVisibility(View.VISIBLE);
+        }else if(f_text.getVisibility() == View.INVISIBLE && k_text.getVisibility() == View.INVISIBLE){
+            f_text.setVisibility(View.VISIBLE);
+            k_text.setVisibility(View.VISIBLE);
         }else if(!allUsed(size)){
             getDatabaseElement(Table);
         }else{
@@ -83,6 +90,7 @@ public class CardActivity extends AppCompatActivity {
             Cursor cursor = db.query(table, new String[]{"F_TEXT", "K_TEXT", "B_TEXT"}, "_id = ?", new String[]{Integer.toString(cardId + 1)}, null, null, null);
 
             if (cursor.moveToFirst()) {
+
                 String frontText = cursor.getString(0);
                 String frontHText = cursor.getString(1);
                 String backText = cursor.getString(2);
@@ -94,6 +102,12 @@ public class CardActivity extends AppCompatActivity {
 
                 b_text.setVisibility(View.INVISIBLE);
                 b_text.setText(backText);
+
+                if (E2J){
+                    f_text.setVisibility(View.INVISIBLE);
+                    h_text.setVisibility(View.INVISIBLE);
+                    b_text.setVisibility(View.VISIBLE);
+                }
             }
             cursor.close();
 

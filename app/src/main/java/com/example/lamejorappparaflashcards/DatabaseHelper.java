@@ -162,7 +162,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion){
         db.execSQL("CREATE TABLE UNIT_FIVE (_id INTEGER PRIMARY KEY AUTOINCREMENT, F_TEXT TEXT, K_TEXT TEXT, B_TEXT TEXT);");
-//        insertCard(db, "古い",      "VIEJO", 5);
+        insertCard(db, "食べ物","たべもの",   "COMIDA", 5);
+        insertCard(db, "古い", "ふるい",      "VIEJO", 5);
 //        insertCard(db, "天気",      "CLIMA", 5);
 //        insertCard(db, "部屋",       "CUARTO", 5);
 //        insertCard(db, "好き",       "GUSTAR", 5);
@@ -208,7 +209,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //        insertCard(db, "休み",     "VACACIONES; DIA LIBRE", 5);
 //        insertCard(db, "旅行",     "VIAJE", 5);
 //        insertCard(db, "大丈夫",   "ESTA BIEN", 5);
-//        insertCard(db, "食べ物",   "COMIDA", 5);
+
 //        insertCard(db, "聞く",       "PREGUNTAR", 5);
 //        insertCard(db, "かっこいい",    "COOL; GUAPO", 5);
 //        insertCard(db, "やさしい",   "AMABLE; FACIL", 5);
