@@ -162,7 +162,7 @@
     <string name="hataraku_h">はたらく</string>
     <string name="futoru_h">ふとる</string>
     <string name="futotteimasu_h">ふとっています</string>
-    <string name="kakeru_h">かける</string>
+    <string name="kakeru_h">めがねをかける</string>
     <string name="kiru_h">きる</string>
     <string name="yaseru_h">やせる</string>
     <string name="yaseteimasu_h">やせています</string>
@@ -188,5 +188,8 @@
     <string name="date_value">Diciembre 2023</string>
 
     <string name="menu_title">Tarjetas</string>
-    <string name="card_mode">Modo: </string>
+    <string name="card_mode">J->E</string>
+    <string name="config">Configuración</string>
+    <string name="review_mode1">KANJI y KANA</string>
+    <string name="review_mode2">KANJI</string>
 </resources>

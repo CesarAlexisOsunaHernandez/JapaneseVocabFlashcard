@@ -2,7 +2,6 @@ package com.example.lamejorappparaflashcards;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -20,6 +19,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private boolean espaToJapa;
+    private boolean kanjiKana;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ft.commit();
 
         espaToJapa = false;
+        kanjiKana  = true;
 
         setContentView(R.layout.activity_main_menu);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -45,12 +46,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(MenuItem item){
         int id = item.getItemId();
-        //ClipData.Item item = findViewById(R.id.card_mode);
+
         Intent intent;
 
         if (id == R.id.unit5){
             intent = new Intent(this, CardActivity.class);
             intent.putExtra("E2J", espaToJapa);
+            intent.putExtra("KK", kanjiKana);
             intent.putExtra("unit_table", "UNIT_FIVE");
             startActivity(intent);
         }
@@ -58,21 +60,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.unit7){
             intent = new Intent(this, CardActivity.class);
             intent.putExtra("E2J", espaToJapa);
+            intent.putExtra("KK", kanjiKana);
             intent.putExtra("unit_table", "UNIT_SEVEN");
             startActivity(intent);
         }
 
         if (id == R.id.card_mode){
             Toast toast;
+
             if (espaToJapa){
                 toast = Toast.makeText(this, "J -> E", Toast.LENGTH_SHORT);
+                item.setTitle("J->E");
 
             }else{
                 toast = Toast.makeText(this, "E -> J", Toast.LENGTH_SHORT);
+                item.setTitle("E->J");
             }
             toast.show();
             espaToJapa = !espaToJapa;
-            System.out.println(espaToJapa);
+        }
+
+        if (id == R.id.review_mode) {
+            Toast toast;
+
+            if (kanjiKana){
+                toast = Toast.makeText(this, R.string.review_mode2, Toast.LENGTH_SHORT);
+                item.setTitle(R.string.review_mode2);
+
+            }else{
+                toast = Toast.makeText(this, R.string.review_mode1, Toast.LENGTH_SHORT);
+                item.setTitle(R.string.review_mode1);
+            }
+            toast.show();
+            kanjiKana = !kanjiKana;
         }
 
         if (id == R.id.message_dev){
@@ -87,33 +107,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent = new Intent(this, CreditsActivity.class);
             startActivity(intent);
         }
-//        switch (id){
-//            case R.id.monsters:
-//                intent = new Intent(this, CardActivity.class);
-//                intent.putExtra("position", 0);
-//                startActivity(intent);
-//                break;
-//            case R.id.monsters:
-//                //intent = new Intent(this, SubMenu.class);
-//                intent.putExtra("position", 1);
-//                startActivity(intent);
-//                break;
-//            case R.id.message_dev:
-//                intent = new Intent();
-//                intent.setAction(Intent.ACTION_VIEW);
-//                String uri = "whatsapp://send?phone=526643637206&text=";
-//                intent.setData(Uri.parse(uri));
-//                startActivity(intent);
-//                break;
-//            case R.id.find_us:
-//                Uri gmmIntentUri = Uri.parse("geo:0,0?q=Universidad Automona de Baja California FCQI");
-//                intent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-//                intent.setPackage("com.google.android.apps.maps");
-//                startActivity(intent);
-//                break;
-//            default:
-//                //fragment = new InboxFragment();
-//        }
+
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

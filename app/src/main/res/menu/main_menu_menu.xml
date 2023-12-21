@@ -27,11 +27,22 @@
                 android:title="@string/unit8"/>
         </menu>
     </item>
-    <item
-        android:id="@+id/card_mode"
-        android:icon="@android:drawable/ic_menu_manage"
-        android:textStyle="italic"
-        android:title="@string/card_mode" />
+
+    <item android:title="@string/config">
+        <menu>
+            <item
+                android:id="@+id/card_mode"
+                android:icon="@android:drawable/ic_menu_manage"
+                android:textStyle="italic"
+                android:title="@string/card_mode" />
+            <item
+                android:id="@+id/review_mode"
+                android:icon="@android:drawable/ic_menu_manage"
+                android:textStyle="italic"
+                android:title="@string/review_mode1" />
+        </menu>
+    </item>
+    
     <item android:title="@string/info">
         <menu>
             <item

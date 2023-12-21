@@ -265,7 +265,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertCard(db, "やせる", context.getString(R.string.yaseru_h),    "ADELGASAR", 7);
         insertCard(db, "やせています", context.getString(R.string.yaseteimasu_h),  "SER DELGADO", 7);
         insertCard(db, "結婚する", context.getString(R.string.kekkonsuru),  "ESTAR CASADO", 7);
-        insertCard(db, "~が", context.getString(R.string.ga_h),      ",PERO", 7);
+        insertCard(db, "～が", context.getString(R.string.ga_h),      ",PERO", 7);
         insertCard(db, "何も+negativo", context.getString(R.string.nanimo_h),   "NADA", 7);
         insertCard(db, "~人", context.getString(R.string.nin_h),  "[CONTADOR PARA PERSONAS]", 7);
         insertCard(db, "一人", context.getString(R.string.hitori_h),"UNA PERSONA", 7);
