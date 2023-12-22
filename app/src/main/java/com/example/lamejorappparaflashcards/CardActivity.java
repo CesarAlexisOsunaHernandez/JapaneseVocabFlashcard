@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class CardActivity extends AppCompatActivity {
     private SQLiteDatabase db;
 
     private int size;
+    private int correct;
     private boolean[] used;
 
     @Override
@@ -47,9 +49,15 @@ public class CardActivity extends AppCompatActivity {
 
         size = (int) DatabaseUtils.queryNumEntries(db, Table);
         used = new boolean[size];
+        correct = 0;
 
-        TextView againBtn = findViewById(R.id.again);
+        View againBtn  = findViewById(R.id.again);
+        View corrBtn   = findViewById(R.id.correct);
+        View incorrBtn = findViewById(R.id.incorrect);
+
         againBtn.setVisibility(View.INVISIBLE);
+        corrBtn.setVisibility(View.INVISIBLE);
+        incorrBtn.setVisibility(View.INVISIBLE);
 
         getDatabaseElement(Table);
     }
@@ -59,8 +67,14 @@ public class CardActivity extends AppCompatActivity {
         TextView f_text = findViewById(R.id.front);
         TextView k_text = findViewById(R.id.front_h);
 
+        View corrBtn   = findViewById(R.id.correct);
+        View incorrBtn = findViewById(R.id.incorrect);
+
         if (b_text.getVisibility() == View.INVISIBLE){
             b_text.setVisibility(View.VISIBLE);
+            corrBtn.setVisibility(View.VISIBLE);
+            incorrBtn.setVisibility(View.VISIBLE);
+
             if(!f_text.getText().equals(k_text.getText()) && !KK) {
                 k_text.setVisibility(View.VISIBLE);
             }
@@ -68,12 +82,8 @@ public class CardActivity extends AppCompatActivity {
             f_text.setVisibility(View.VISIBLE);
             if (!f_text.getText().equals(k_text.getText()))
                 k_text.setVisibility(View.VISIBLE);
-        }else if(!allUsed(size)){
+        }else if(!allUsed(size) && corrBtn.getVisibility() != View.VISIBLE){
             getDatabaseElement(Table);
-        }else{
-            TextView againBtn = findViewById(R.id.again);
-            againBtn.setVisibility(View.VISIBLE);
-            db.close();
         }
     }
 
@@ -147,6 +157,38 @@ public class CardActivity extends AppCompatActivity {
         }catch (Exception e){
 
         }
+        correct = 0;
         getDatabaseElement(Table);
+    }
+
+    public void updateScore(View view){
+        View corrBtn   = findViewById(R.id.correct);
+        View incorrBtn = findViewById(R.id.incorrect);
+
+        if (view.getId() == R.id.correct){
+            correct++;
+        }
+
+        corrBtn.setVisibility(View.INVISIBLE);
+        incorrBtn.setVisibility(View.INVISIBLE);
+
+        //manageCard(view);
+        if(allUsed(size)){
+            View againBtn = findViewById(R.id.again);
+
+            TextView f_text = findViewById(R.id.front);
+            TextView h_text = findViewById(R.id.front_h);
+            TextView b_text = findViewById(R.id.back);
+
+            againBtn.setVisibility(View.VISIBLE);
+
+            f_text.setText("Correctas");
+            h_text.setVisibility(View.INVISIBLE);
+            b_text.setText(Integer.toString(correct));
+
+            db.close();
+        }else{
+            getDatabaseElement(Table);
+        }
     }
 }
