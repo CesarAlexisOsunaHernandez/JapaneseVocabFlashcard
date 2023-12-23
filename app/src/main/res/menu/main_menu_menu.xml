@@ -3,6 +3,12 @@
     <item android:title="@string/menu_title">
         <menu android:checkableBehavior="single">
             <item
+                android:id="@+id/katakana"
+                android:icon="@android:drawable/radiobutton_off_background"
+                android:textStyle="italic"
+                android:title="@string/katakana"/>
+
+            <item
                 android:id="@+id/unit5"
                 android:icon="@android:drawable/radiobutton_off_background"
                 android:textStyle="italic"

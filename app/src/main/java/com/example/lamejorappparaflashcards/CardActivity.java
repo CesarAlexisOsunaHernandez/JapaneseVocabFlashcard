@@ -1,6 +1,8 @@
 package com.example.lamejorappparaflashcards;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -190,5 +192,11 @@ public class CardActivity extends AppCompatActivity {
         }else{
             getDatabaseElement(Table);
         }
+    }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        db.close();
     }
 }

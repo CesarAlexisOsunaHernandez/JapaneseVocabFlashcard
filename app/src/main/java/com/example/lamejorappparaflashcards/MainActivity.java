@@ -49,6 +49,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Intent intent;
 
+        if (id == R.id.katakana){
+            intent = new Intent(this, CardActivity.class);
+            intent.putExtra("E2J", espaToJapa);
+            intent.putExtra("KK", kanjiKana);
+            intent.putExtra("unit_table", "KATAKANA");
+            startActivity(intent);
+        }
+
         if (id == R.id.unit5){
             intent = new Intent(this, CardActivity.class);
             intent.putExtra("E2J", espaToJapa);
@@ -57,11 +65,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         }
 
+        if (id == R.id.unit6){
+            intent = new Intent(this, CardActivity.class);
+            intent.putExtra("E2J", espaToJapa);
+            intent.putExtra("KK", kanjiKana);
+            intent.putExtra("unit_table", "UNIT_SIX");
+            startActivity(intent);
+        }
+
         if (id == R.id.unit7){
             intent = new Intent(this, CardActivity.class);
             intent.putExtra("E2J", espaToJapa);
             intent.putExtra("KK", kanjiKana);
             intent.putExtra("unit_table", "UNIT_SEVEN");
+            startActivity(intent);
+        }
+
+        if (id == R.id.unit8){
+            intent = new Intent(this, CardActivity.class);
+            intent.putExtra("E2J", espaToJapa);
+            intent.putExtra("KK", kanjiKana);
+            intent.putExtra("unit_table", "UNIT_EIGHT");
             startActivity(intent);
         }
 
