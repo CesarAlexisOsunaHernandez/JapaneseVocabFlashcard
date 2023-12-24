@@ -12,6 +12,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,7 +22,7 @@ import java.util.Random;
 
 public class CardActivity extends AppCompatActivity {
     private Context context;
-    private String Table;
+    private long Table;
     private boolean E2J;
     private boolean KK;
     private SQLiteOpenHelper databaseHelper;
@@ -37,9 +38,11 @@ public class CardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
 
-        Table = (String) getIntent().getExtras().get("unit_table");
+        Table = (long) getIntent().getExtras().get("unit_table");
         E2J = (boolean) getIntent().getExtras().get("E2J");
         KK = (boolean) getIntent().getExtras().get("KK");
+
+        System.out.println(Table);
 
         databaseHelper = new DatabaseHelper(this);
 
@@ -49,7 +52,7 @@ public class CardActivity extends AppCompatActivity {
 
         }
 
-        size = (int) DatabaseUtils.queryNumEntries(db, Table);
+        size = (int) DatabaseUtils.queryNumEntries(db, getTableName(Table));
         used = new boolean[size];
         correct = 0;
 
@@ -89,7 +92,7 @@ public class CardActivity extends AppCompatActivity {
         }
     }
 
-    protected void getDatabaseElement(String table){
+    protected void getDatabaseElement(long table){
         int cardId;
         try {
             TextView f_text = findViewById(R.id.front);
@@ -101,12 +104,12 @@ public class CardActivity extends AppCompatActivity {
             Random ran = new Random();
 
             do{
-                cardId = ran.nextInt((int) DatabaseUtils.queryNumEntries(db, table));
+                cardId = ran.nextInt((int) DatabaseUtils.queryNumEntries(db, getTableName(Table)));
             }while (used[cardId]);
 
             used[cardId] = true;
 
-            Cursor cursor = db.query(table, new String[]{"F_TEXT", "K_TEXT", "B_TEXT"}, "_id = ?", new String[]{Integer.toString(cardId + 1)}, null, null, null);
+            Cursor cursor = db.query(getTableName(table), new String[]{"F_TEXT", "K_TEXT", "B_TEXT"}, "_id = ?", new String[]{Integer.toString(cardId + 1)}, null, null, null);
 
             if (cursor.moveToFirst()) {
 
@@ -186,7 +189,7 @@ public class CardActivity extends AppCompatActivity {
 
             f_text.setText("Correctas");
             h_text.setVisibility(View.INVISIBLE);
-            b_text.setText(Integer.toString(correct));
+            b_text.setText(Integer.toString(correct) + " / " + Integer.toString(size));
 
             db.close();
         }else{
@@ -198,5 +201,24 @@ public class CardActivity extends AppCompatActivity {
     public void onBackPressed(){
         super.onBackPressed();
         db.close();
+    }
+
+    private String getTableName(long id){
+        Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
+        int i = -1;
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                // Retrieve table names
+                String tableName = cursor.getString(0);
+
+                if (!tableName.equals("android_metadata") && !tableName.equals("sqlite_sequence")) {
+                    i++;
+                }
+                if (i == id)
+                    return tableName;
+            }
+
+        }
+        return "-1";
     }
 }

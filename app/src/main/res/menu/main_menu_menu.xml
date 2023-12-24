@@ -3,34 +3,46 @@
     <item android:title="@string/menu_title">
         <menu android:checkableBehavior="single">
             <item
-                android:id="@+id/katakana"
+                android:id="@+id/cards"
                 android:icon="@android:drawable/radiobutton_off_background"
                 android:textStyle="italic"
-                android:title="@string/katakana"/>
+                android:title="@string/cards"/>
 
             <item
-                android:id="@+id/unit5"
-                android:icon="@android:drawable/radiobutton_off_background"
+                android:id="@+id/addcard"
+                android:icon="@android:drawable/ic_menu_add"
                 android:textStyle="italic"
-                android:title="@string/unit5"/>
+                android:title="@string/addcard"/>
 
-            <item
-                android:id="@+id/unit6"
-                android:icon="@android:drawable/radiobutton_off_background"
-                android:textStyle="italic"
-                android:title="@string/unit6"/>
+<!--            <item-->
+<!--                android:id="@+id/katakana"-->
+<!--                android:icon="@android:drawable/radiobutton_off_background"-->
+<!--                android:textStyle="italic"-->
+<!--                android:title="@string/katakana"/>-->
 
-            <item
-                android:id="@+id/unit7"
-                android:icon="@android:drawable/radiobutton_off_background"
-                android:textStyle="italic"
-                android:title="@string/unit7"/>
+<!--            <item-->
+<!--                android:id="@+id/unit5"-->
+<!--                android:icon="@android:drawable/radiobutton_off_background"-->
+<!--                android:textStyle="italic"-->
+<!--                android:title="@string/unit5"/>-->
 
-            <item
-                android:id="@+id/unit8"
-                android:icon="@android:drawable/radiobutton_off_background"
-                android:textStyle="italic"
-                android:title="@string/unit8"/>
+<!--            <item-->
+<!--                android:id="@+id/unit6"-->
+<!--                android:icon="@android:drawable/radiobutton_off_background"-->
+<!--                android:textStyle="italic"-->
+<!--                android:title="@string/unit6"/>-->
+
+<!--            <item-->
+<!--                android:id="@+id/unit7"-->
+<!--                android:icon="@android:drawable/radiobutton_off_background"-->
+<!--                android:textStyle="italic"-->
+<!--                android:title="@string/unit7"/>-->
+
+<!--            <item-->
+<!--                android:id="@+id/unit8"-->
+<!--                android:icon="@android:drawable/radiobutton_off_background"-->
+<!--                android:textStyle="italic"-->
+<!--                android:title="@string/unit8"/>-->
         </menu>
     </item>
 

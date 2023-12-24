@@ -3,11 +3,13 @@
     <string name="app_name">LaMejorAppParaFlashcards</string>
     <string name="creator">De Cesar Osuna</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cards">Cartas</string>
     <string name="katakana">Katakana</string>
     <string name="unit5">Unidad 5</string>
     <string name="unit6">Unidad 6</string>
     <string name="unit7">Unidad 7</string>
     <string name="unit8">Unidad 8</string>
+    <string name="addcard">Añadir set</string>
 
     <!--    Unidad 5 - KANJI-->
     <string name="tabemono_k">食べ物</string>
@@ -332,7 +334,7 @@
     <string name="itsumo_e">SIEMPRE</string>
     <string name="osoku_e">HACER ALGO TARDE</string>
     <string name="kanpai_e">¡SALUD!</string>
-    <string name="minnade_e">ALL TOGETHER</string>
+    <string name="minnade_e">TODOS JUNTOS</string>
     <string name="zannendesune_e">QUE LASTIMA</string>
     <string name="mada_e">AUN</string>
     <string name="nitsuite_e">SOBRE; EN RELACION CON</string>
