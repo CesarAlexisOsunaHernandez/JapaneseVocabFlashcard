@@ -8,9 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.ClipData;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
@@ -19,9 +17,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private boolean espaToJapa;
@@ -41,7 +36,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         databaseHelper = new DatabaseHelper(this);
 
-        db = databaseHelper.getReadableDatabase();
+        try {
+            db = databaseHelper.getReadableDatabase();
+        }catch (Exception e){
+            System.out.println("Error en la base de datos");
+        }
 
         setContentView(R.layout.activity_main_menu);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -65,50 +64,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent = new Intent(this, TablesListActivity.class);
             intent.putExtra("E2J", espaToJapa);
             intent.putExtra("KK", kanjiKana);
-            intent.putExtra("unit_table", "KATAKANA");
             startActivity(intent);
         }
 
-//        if (id == R.id.katakana){
-//            //intent = new Intent(this, CardActivity.class);
-//            intent = new Intent(this, TablesListActivity.class);
-//            intent.putExtra("E2J", espaToJapa);
-//            intent.putExtra("KK", kanjiKana);
-//            intent.putExtra("unit_table", "KATAKANA");
-//            startActivity(intent);
-//        }
-
-//        if (id == R.id.unit5){
-//            intent = new Intent(this, CardActivity.class);
-//            intent.putExtra("E2J", espaToJapa);
-//            intent.putExtra("KK", kanjiKana);
-//            intent.putExtra("unit_table", "UNIT_FIVE");
-//            startActivity(intent);
-//        }
-//
-//        if (id == R.id.unit6){
-//            intent = new Intent(this, CardActivity.class);
-//            intent.putExtra("E2J", espaToJapa);
-//            intent.putExtra("KK", kanjiKana);
-//            intent.putExtra("unit_table", "UNIT_SIX");
-//            startActivity(intent);
-//        }
-//
-//        if (id == R.id.unit7){
-//            intent = new Intent(this, CardActivity.class);
-//            intent.putExtra("E2J", espaToJapa);
-//            intent.putExtra("KK", kanjiKana);
-//            intent.putExtra("unit_table", "UNIT_SEVEN");
-//            startActivity(intent);
-//        }
-//
-//        if (id == R.id.unit8){
-//            intent = new Intent(this, CardActivity.class);
-//            intent.putExtra("E2J", espaToJapa);
-//            intent.putExtra("KK", kanjiKana);
-//            intent.putExtra("unit_table", "UNIT_EIGHT");
-//            startActivity(intent);
-//        }
+        if (id == R.id.addcard){
+            intent = new Intent(this, CreateSetActivity.class);
+            startActivity(intent);
+        }
 
         if (id == R.id.card_mode){
             Toast toast;
@@ -152,8 +114,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent = new Intent(this, CreditsActivity.class);
             startActivity(intent);
         }
-
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

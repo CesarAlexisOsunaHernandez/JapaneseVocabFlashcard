@@ -26,7 +26,6 @@
         android:layout_gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="36sp"
-        android:text="\u3061"
         android:textStyle="italic" />
 
     <TextView

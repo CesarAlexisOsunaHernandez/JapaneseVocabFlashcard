@@ -22,7 +22,7 @@ import java.util.Random;
 
 public class CardActivity extends AppCompatActivity {
     private Context context;
-    private long Table;
+    private String Table;
     private boolean E2J;
     private boolean KK;
     private SQLiteOpenHelper databaseHelper;
@@ -30,6 +30,7 @@ public class CardActivity extends AppCompatActivity {
 
     private int size;
     private int correct;
+    private int cardId;
     private boolean[] used;
 
     @Override
@@ -38,11 +39,10 @@ public class CardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
 
-        Table = (long) getIntent().getExtras().get("unit_table");
+        Table = (String) getIntent().getExtras().get("unit_table");
+        Table = Table.replace(' ', '_');
         E2J = (boolean) getIntent().getExtras().get("E2J");
         KK = (boolean) getIntent().getExtras().get("KK");
-
-        System.out.println(Table);
 
         databaseHelper = new DatabaseHelper(this);
 
@@ -52,19 +52,58 @@ public class CardActivity extends AppCompatActivity {
 
         }
 
-        size = (int) DatabaseUtils.queryNumEntries(db, getTableName(Table));
-        used = new boolean[size];
-        correct = 0;
-
-        View againBtn  = findViewById(R.id.again);
-        View corrBtn   = findViewById(R.id.correct);
+        View againBtn = findViewById(R.id.again);
+        View corrBtn = findViewById(R.id.correct);
         View incorrBtn = findViewById(R.id.incorrect);
 
         againBtn.setVisibility(View.INVISIBLE);
         corrBtn.setVisibility(View.INVISIBLE);
         incorrBtn.setVisibility(View.INVISIBLE);
 
-        getDatabaseElement(Table);
+        size = (int) DatabaseUtils.queryNumEntries(db, Table);
+        if (size > 0) {
+            used = new boolean[size];
+            correct = 0;
+
+            TextView b_text = findViewById(R.id.back);
+            TextView f_text = findViewById(R.id.front);
+            TextView h_text = findViewById(R.id.front_h);
+
+            if (savedInstanceState != null) {
+                used = savedInstanceState.getBooleanArray("used");
+                cardId = savedInstanceState.getInt("cardId");
+                correct = savedInstanceState.getInt("correct");
+
+                Cursor cursor = db.query(Table, new String[]{"F_TEXT", "K_TEXT", "B_TEXT"}, "_id = ?", new String[]{Integer.toString(cardId + 1)}, null, null, null);
+
+                if (cursor.moveToFirst()) {
+                    String frontText = cursor.getString(0);
+                    String frontHText = cursor.getString(1);
+                    String backText = cursor.getString(2);
+
+                    f_text.setText(frontText);
+
+                    if (frontHText.equals(frontText) || !KK)
+                        h_text.setVisibility(View.INVISIBLE);
+                    h_text.setText(frontHText);
+
+                    b_text.setVisibility(View.INVISIBLE);
+                    b_text.setText(backText);
+
+                    if (E2J) {
+                        f_text.setVisibility(View.INVISIBLE);
+                        h_text.setVisibility(View.INVISIBLE);
+                        b_text.setVisibility(View.VISIBLE);
+                    }
+                }
+                cursor.close();
+            } else {
+                getDatabaseElement(Table);
+            }
+        }else{
+            Toast toast = Toast.makeText(this,"Set de cartas vacio", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     public void manageCard(View view){
@@ -92,8 +131,7 @@ public class CardActivity extends AppCompatActivity {
         }
     }
 
-    protected void getDatabaseElement(long table){
-        int cardId;
+    protected void getDatabaseElement(String table){
         try {
             TextView f_text = findViewById(R.id.front);
             TextView h_text = findViewById(R.id.front_h);
@@ -104,12 +142,12 @@ public class CardActivity extends AppCompatActivity {
             Random ran = new Random();
 
             do{
-                cardId = ran.nextInt((int) DatabaseUtils.queryNumEntries(db, getTableName(Table)));
+                cardId = ran.nextInt((int) DatabaseUtils.queryNumEntries(db, Table));
             }while (used[cardId]);
 
             used[cardId] = true;
 
-            Cursor cursor = db.query(getTableName(table), new String[]{"F_TEXT", "K_TEXT", "B_TEXT"}, "_id = ?", new String[]{Integer.toString(cardId + 1)}, null, null, null);
+            Cursor cursor = db.query(table, new String[]{"F_TEXT", "K_TEXT", "B_TEXT"}, "_id = ?", new String[]{Integer.toString(cardId + 1)}, null, null, null);
 
             if (cursor.moveToFirst()) {
 
@@ -135,7 +173,7 @@ public class CardActivity extends AppCompatActivity {
             cursor.close();
 
         } catch (SQLiteException e) {
-            Toast toast = Toast.makeText(this, context.getString(R.string.test), Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this,"Set de cartas vacio", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
@@ -203,22 +241,11 @@ public class CardActivity extends AppCompatActivity {
         db.close();
     }
 
-    private String getTableName(long id){
-        Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
-        int i = -1;
-        if (cursor != null) {
-            while (cursor.moveToNext()) {
-                // Retrieve table names
-                String tableName = cursor.getString(0);
-
-                if (!tableName.equals("android_metadata") && !tableName.equals("sqlite_sequence")) {
-                    i++;
-                }
-                if (i == id)
-                    return tableName;
-            }
-
-        }
-        return "-1";
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putBooleanArray("used", used);
+        savedInstanceState.putInt("cardId", cardId);
+        savedInstanceState.putInt("correct", correct);
     }
 }

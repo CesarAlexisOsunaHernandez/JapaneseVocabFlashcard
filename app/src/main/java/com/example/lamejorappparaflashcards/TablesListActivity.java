@@ -30,9 +30,9 @@ public class TablesListActivity extends AppCompatActivity {
         kanjiKana = (boolean) getIntent().getExtras().get("KK");
 
         List<String> tables = new ArrayList<>();
+        List<String> tablesReal = new ArrayList<>();
         ListView tablesView = findViewById(R.id.tables);
         SQLiteOpenHelper databaseHelper = new DatabaseHelper(this);
-
 
         try {
             SQLiteDatabase db = databaseHelper.getReadableDatabase();
@@ -45,6 +45,7 @@ public class TablesListActivity extends AppCompatActivity {
                     String tableName = cursor.getString(0);
 
                     if (!tableName.equals("android_metadata") && !tableName.equals("sqlite_sequence")) {
+                        tablesReal.add(tableName.replace('_',' '));
                         if (tableName.equals("KATAKANA"))
                             tableName = this.getString(R.string.katakana);
                         if (tableName.equals("UNIT_FIVE"))
@@ -55,7 +56,7 @@ public class TablesListActivity extends AppCompatActivity {
                             tableName = this.getString(R.string.unit7);
                         if (tableName.equals("UNIT_EIGHT"))
                             tableName = this.getString(R.string.unit8);
-                        tables.add(tableName);
+                        tables.add(tableName.replace('_',' '));
                     }
                 }
 
@@ -66,17 +67,19 @@ public class TablesListActivity extends AppCompatActivity {
                 );
 
                 tablesView.setAdapter(arrayAdapter);
-                //cursor.close();
+                cursor.close();
             }
         }catch (Exception e){
             System.out.println("No database");
         }
+
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> listTables, View itemView, int position, long id) {
-                Intent intent = new Intent(TablesListActivity.this, CardActivity.class);
+
+                Intent intent = new Intent(TablesListActivity.this, SubMenuActivity.class);
                 intent.putExtra("E2J", espaToJapa);
                 intent.putExtra("KK", kanjiKana);
-                intent.putExtra("unit_table", id);
+                intent.putExtra("unit_table", tablesReal.get((int) id));
                 startActivity(intent);
             }
         };

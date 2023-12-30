@@ -13,6 +13,21 @@
         android:theme="@style/Theme.LaMejorAppParaFlashcards"
         tools:targetApi="31">
         <activity
+            android:name=".DeleteCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateSetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SetContentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SubMenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".TablesListActivity"
             android:exported="false" />
         <activity
