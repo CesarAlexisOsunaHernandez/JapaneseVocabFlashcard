@@ -67,8 +67,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         }
 
-        if (id == R.id.addcard){
+        if (id == R.id.addset){
             intent = new Intent(this, CreateSetActivity.class);
+            startActivity(intent);
+        }
+
+        if (id == R.id.delset){
+            intent = new Intent(this, DeleteSetActivity.class);
             startActivity(intent);
         }
 
