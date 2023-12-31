@@ -25,10 +25,12 @@ public class CreateSetActivity extends AppCompatActivity {
         EditText editText = findViewById(R.id.table_name);
 
         String tableName = editText.getText().toString();
+        tableName = tableName.replace(' ', '$');
+        System.out.println(tableName);
 
         if(!tableName.equals("")){
             db = dbh.getReadableDatabase();
-            db.execSQL("CREATE TABLE " + tableName.replace(' ','_') + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, F_TEXT TEXT, K_TEXT TEXT, B_TEXT TEXT);");
+            db.execSQL("CREATE TABLE " + tableName + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, F_TEXT TEXT, K_TEXT TEXT, B_TEXT TEXT);");
 
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

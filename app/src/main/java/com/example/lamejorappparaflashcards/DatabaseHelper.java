@@ -2,6 +2,7 @@ package com.example.lamejorappparaflashcards;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -291,7 +292,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public static void insertCard(SQLiteDatabase db, String F_TEXT, String K_TEXT, String B_TEXT, String table){
+        int size = (int) DatabaseUtils.queryNumEntries(db, table);
         ContentValues cardValues = new ContentValues();
+        cardValues.put("_id", size + 1);
         cardValues.put("F_TEXT", F_TEXT);
         cardValues.put("K_TEXT", K_TEXT);
         cardValues.put("B_TEXT", B_TEXT);

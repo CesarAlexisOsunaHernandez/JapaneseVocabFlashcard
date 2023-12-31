@@ -43,7 +43,7 @@ public class DeleteSetActivity extends AppCompatActivity {
                     if (!tableName.equals("android_metadata") && !tableName.equals("sqlite_sequence") &&
                         !tableName.equals("KATAKANA") && !tableName.equals("UNIT_FIVE") && !tableName.equals("UNIT_SIX") &&
                         !tableName.equals("UNIT_SEVEN") && !tableName.equals("UNIT_EIGHT")) {
-                        tables.add(tableName.replace('_',' '));
+                        tables.add(tableName.replace('$',' '));
                     }
                 }
 

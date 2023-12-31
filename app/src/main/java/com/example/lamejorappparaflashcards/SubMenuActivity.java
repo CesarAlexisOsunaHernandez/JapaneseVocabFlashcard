@@ -1,6 +1,8 @@
 package com.example.lamejorappparaflashcards;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -63,6 +65,15 @@ public class SubMenuActivity extends AppCompatActivity {
     public void showContent(View view){
         Intent intent = new Intent(this, SetContentActivity.class);
         intent.putExtra("unit_table", Table);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed(){
+        //super.onBackPressed();
+        Intent intent = new Intent(this, TablesListActivity.class);
+        intent.putExtra("E2J", espaToJapa);
+        intent.putExtra("KK", kanjiKana);
         startActivity(intent);
     }
 }

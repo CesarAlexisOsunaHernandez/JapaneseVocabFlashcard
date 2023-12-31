@@ -56,7 +56,7 @@ public class TablesListActivity extends AppCompatActivity {
                             tableName = this.getString(R.string.unit7);
                         if (tableName.equals("UNIT_EIGHT"))
                             tableName = this.getString(R.string.unit8);
-                        tables.add(tableName.replace('_',' '));
+                        tables.add(tableName.replace('$',' '));
                     }
                 }
 
@@ -85,5 +85,12 @@ public class TablesListActivity extends AppCompatActivity {
         };
 
         tablesView.setOnItemClickListener(itemClickListener);
+    }
+
+    @Override
+    public void onBackPressed(){
+        //super.onBackPressed();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
