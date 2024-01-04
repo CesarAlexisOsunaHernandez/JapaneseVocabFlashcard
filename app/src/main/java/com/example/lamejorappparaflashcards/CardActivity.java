@@ -114,7 +114,7 @@ public class CardActivity extends AppCompatActivity {
         View corrBtn   = findViewById(R.id.correct);
         View incorrBtn = findViewById(R.id.incorrect);
 
-        if (b_text.getVisibility() == View.INVISIBLE){
+        if (b_text.getVisibility() == View.INVISIBLE){    //Si el texto de abajo es invisible
             b_text.setVisibility(View.VISIBLE);
             corrBtn.setVisibility(View.VISIBLE);
             incorrBtn.setVisibility(View.VISIBLE);
@@ -122,8 +122,11 @@ public class CardActivity extends AppCompatActivity {
             if(!f_text.getText().equals(k_text.getText()) && !KK) {
                 k_text.setVisibility(View.VISIBLE);
             }
-        }else if(f_text.getVisibility() == View.INVISIBLE && k_text.getVisibility() == View.INVISIBLE){
+        }else if(f_text.getVisibility() == View.INVISIBLE && k_text.getVisibility() == View.INVISIBLE){ //Si los dos textos de arriba son invisibles
             f_text.setVisibility(View.VISIBLE);
+            corrBtn.setVisibility(View.VISIBLE);
+            incorrBtn.setVisibility(View.VISIBLE);
+
             if (!f_text.getText().equals(k_text.getText()))
                 k_text.setVisibility(View.VISIBLE);
         }else if(!allUsed(size) && corrBtn.getVisibility() != View.VISIBLE){

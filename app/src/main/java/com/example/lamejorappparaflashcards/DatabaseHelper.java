@@ -198,7 +198,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertCard(db, context.getString(R.string.mijikai_k), context.getString(R.string.mijikai_h),    "CORTO", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.hayai_k), context.getString(R.string.hayai_h),     "RAPIDO", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.segatakai_k), context.getString(R.string.segatakai_h),    "ALTO", "UNIT_SEVEN");
-        insertCard(db, context.getString(R.string.segahikui_h), context.getString(R.string.segahikui_h), "BAJO; CORTO", "UNIT_SEVEN");
+        insertCard(db, context.getString(R.string.segahikui_k), context.getString(R.string.segahikui_h), "BAJO; CORTO", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.atamagaii_k), context.getString(R.string.atamagaii_h),  "INTELIGENTE", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.kawaii_k), context.getString(R.string.kawaii_h),  "LINDO", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.shinsetsu_k), context.getString(R.string.shinsetsu_h),     "AMABLE", "UNIT_SEVEN");
@@ -217,7 +217,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertCard(db, context.getString(R.string.kiru_k), context.getString(R.string.kiru_h),    "PONERSE COSAS ARRIBA DE LA CINTURA", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.yaseru_k), context.getString(R.string.yaseru_h),    "ADELGASAR", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.yaseteimasu_k), context.getString(R.string.yaseteimasu_h),  "SER DELGADO", "UNIT_SEVEN");
-        insertCard(db, context.getString(R.string.kekkonsuru_k), context.getString(R.string.kekkonsuru_h),  "ESTAR CASADO", "UNIT_SEVEN");
+        insertCard(db, context.getString(R.string.kekkonsuru_k), context.getString(R.string.kekkonsuru_h),  "CASARSE", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.ga_k), context.getString(R.string.ga_h),      ",PERO", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.nanimo_k), context.getString(R.string.nanimo_h),   "NADA", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.nin_k), context.getString(R.string.nin_h),  "[CONTADOR PARA PERSONAS]", "UNIT_SEVEN");
