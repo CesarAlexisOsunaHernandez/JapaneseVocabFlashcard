@@ -208,7 +208,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertCard(db, context.getString(R.string.haku_k), context.getString(R.string.haku_h),  "PONERSE COSAS DEBAJO DE LA CINTURA", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.shiru_k), context.getString(R.string.shiru_h),    "SABER", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.shitteimasu_k), context.getString(R.string.shitteimasu_h),     "YO SE", "UNIT_SEVEN");
-        insertCard(db, context.getString(R.string.shitteimasen_k), context.getString(R.string.shitteimasen_h),    "NO SE", "UNIT_SEVEN");
+        insertCard(db, context.getString(R.string.shitteimasen_k), context.getString(R.string.shirimasen_h),    "NO SE", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.sumu_k), context.getString(R.string.sumu_h),   "VIVIR EN UN LUGAR", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.hataraku_k), context.getString(R.string.hataraku_h),  "TRABAJAR", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.futoru_k), context.getString(R.string.futoru_h),     "ENGORDAR", "UNIT_SEVEN");
@@ -252,7 +252,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertCard(db, "バーベキュー", "バーベキュー",   context.getString(R.string.baabekyuu_e), "UNIT_EIGHT");
         insertCard(db, "ホームステイ", "ホームステイ",   context.getString(R.string.hoomusutei_e), "UNIT_EIGHT");
         insertCard(db, "お風呂", "おふろ",   context.getString(R.string.ofuro_e), "UNIT_EIGHT");
-        insertCard(db, "スペイン", "スパイン",   context.getString(R.string.supein_e), "UNIT_EIGHT");
+        insertCard(db, "スぺイン", "スぺイン",   context.getString(R.string.supein_e), "UNIT_EIGHT");
         insertCard(db, "何か", "なにか",   context.getString(R.string.nanika_e), "UNIT_EIGHT");
         insertCard(db, "上手", "じょうず",   context.getString(R.string.jouzu_e), "UNIT_EIGHT");
         insertCard(db, "下手", "へた",   context.getString(R.string.heta_e), "UNIT_EIGHT");
@@ -281,8 +281,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertCard(db, "みんなで", "みんなで",   context.getString(R.string.minnade_e), "UNIT_EIGHT");
         insertCard(db, "残念ですね", "ざんねんですね",   context.getString(R.string.zannendesune_e), "UNIT_EIGHT");
         insertCard(db, "まだ", "まだ",   context.getString(R.string.mada_e), "UNIT_EIGHT");
-        insertCard(db, "ーについて", "ーについて",   context.getString(R.string.nitsuite_e), "UNIT_EIGHT");
-        insertCard(db, "ー度", "ーど",   context.getString(R.string.do_e), "UNIT_EIGHT");
+        insertCard(db, "～について", "～について",   context.getString(R.string.nitsuite_e), "UNIT_EIGHT");
+        insertCard(db, "～度", "～ど",   context.getString(R.string.do_e), "UNIT_EIGHT");
         insertCard(db, "どう", "どう",   context.getString(R.string.dou_e), "UNIT_EIGHT");
 }
 
