@@ -208,7 +208,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertCard(db, context.getString(R.string.haku_k), context.getString(R.string.haku_h),  "PONERSE COSAS DEBAJO DE LA CINTURA", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.shiru_k), context.getString(R.string.shiru_h),    "SABER", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.shitteimasu_k), context.getString(R.string.shitteimasu_h),     "YO SE", "UNIT_SEVEN");
-        insertCard(db, context.getString(R.string.shitteimasen_k), context.getString(R.string.shitteimasen_h),    "NO SE", "UNIT_SEVEN");
+        insertCard(db, context.getString(R.string.shitteimasen_k), context.getString(R.string.shirimasen_h),    "NO SE", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.sumu_k), context.getString(R.string.sumu_h),   "VIVIR EN UN LUGAR", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.hataraku_k), context.getString(R.string.hataraku_h),  "TRABAJAR", "UNIT_SEVEN");
         insertCard(db, context.getString(R.string.futoru_k), context.getString(R.string.futoru_h),     "ENGORDAR", "UNIT_SEVEN");
