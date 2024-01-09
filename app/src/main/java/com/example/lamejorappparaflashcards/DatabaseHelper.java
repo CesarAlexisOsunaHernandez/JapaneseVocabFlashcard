@@ -18,7 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE KATAKANA (_id INTEGER PRIMARY KEY AUTOINCREMENT, F_TEXT TEXT, B_TEXT TEXT);");
+        db.execSQL("CREATE TABLE KATAKANA (_id INTEGER PRIMARY KEY AUTOINCREMENT, F_TEXT TEXT, K_TEXT TEXT, B_TEXT TEXT);");
         insertCard(db, "ア", "",   "A", "KATAKANA");
         insertCard(db, "イ", "",   "I", "KATAKANA");
         insertCard(db, "ウ", "",   "U", "KATAKANA");
@@ -66,7 +66,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertCard(db, "ヲ", "",   "WO", "KATAKANA");
         insertCard(db, "ン", "",   "N", "KATAKANA");
 
-        db.execSQL("CREATE TABLE UNIT_FIVE (_id INTEGER PRIMARY KEY AUTOINCREMENT, F_TEXT TEXT, B_TEXT TEXT);");
+        db.execSQL("CREATE TABLE UNIT_FIVE (_id INTEGER PRIMARY KEY AUTOINCREMENT, F_TEXT TEXT, K_TEXT TEXT, B_TEXT TEXT);");
         insertCard(db, context.getString(R.string.tabemono_k),context.getString(R.string.tabemono_h),   "COMIDA", "UNIT_FIVE");
         insertCard(db, context.getString(R.string.nomimono_k),context.getString(R.string.nomimono_h),   "BEBIDA", "UNIT_FIVE");
         insertCard(db, context.getString(R.string.kudamono_k),context.getString(R.string.kudamono_h),   "FRUTAS", "UNIT_FIVE");
@@ -120,7 +120,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertCard(db, context.getString(R.string.donna_k),context.getString(R.string.donna_h),   "QUE TIPO DE ", "UNIT_FIVE");
         insertCard(db, context.getString(R.string.mai_k),context.getString(R.string.mai_h),   "[CONTADOR PARA OBJETOS PLANOS]", "UNIT_FIVE");
 
-        db.execSQL("CREATE TABLE UNIT_SIX (_id INTEGER PRIMARY KEY AUTOINCREMENT, F_TEXT TEXT, B_TEXT TEXT);");
+        db.execSQL("CREATE TABLE UNIT_SIX (_id INTEGER PRIMARY KEY AUTOINCREMENT, F_TEXT TEXT, K_TEXT TEXT, B_TEXT TEXT);");
         insertCard(db, "漢字", "かんじ",   context.getString(R.string.kanji_e), "UNIT_SIX");
         insertCard(db, "教科書", "きょうかしょ",   context.getString(R.string.kyokasho_e), "UNIT_SIX");
         insertCard(db, "ページ", "ページ",   context.getString(R.string.peeji_e), "UNIT_SIX");

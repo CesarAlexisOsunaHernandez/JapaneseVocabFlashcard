@@ -16,7 +16,8 @@
         android:layout_gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="48sp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:text="prueba"/>
 
     <TextView
         android:id="@+id/front_h"
@@ -26,18 +27,20 @@
         android:layout_gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="36sp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:text="prueba"/>
 
     <TextView
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="24sp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:text="prueba"/>
 
     <Button
         android:id="@+id/again"
@@ -50,10 +53,10 @@
         android:paddingEnd="50dp"
         android:paddingBottom="20dp"
         android:text="Reiniciar lista"
-        android:textSize="34sp"
+        android:textSize="20sp"
         android:onClick="restart"/>
 
-    <LinearLayout
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -61,7 +64,6 @@
             android:id="@+id/correct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginStart="50dp"
             android:onClick="updateScore"
@@ -71,12 +73,12 @@
             android:id="@+id/incorrect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="460dp"
+            android:layout_gravity="end"
             android:gravity="center"
+            android:layout_marginEnd="50dp"
             android:onClick="updateScore"
             android:text="MAL" />
 
-    </LinearLayout>
+    </GridLayout>
 
 </LinearLayout>
