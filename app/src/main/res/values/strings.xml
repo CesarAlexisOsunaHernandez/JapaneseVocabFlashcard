@@ -1,6 +1,7 @@
 <resources>
     <string name="test">test</string>
-    <string name="app_name">LaMejorAppParaFlashcards</string>
+<!--    <string name="app_name">LaMejorAppParaFlashcards</string>-->
+    <string name="app_name">BENKA</string>
     <string name="creator">De Cesar Osuna</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cards">Cartas</string>
@@ -347,10 +348,12 @@
 
     <string name="developer">Desarrollador:</string>
     <string name="transcriber">Transcriptores:</string>
+    <string name="graphic">Diseño gráfico:</string>
     <string name="developer_name">Cesar A. Osuna H.</string>
     <string name="transcriber_name_1">からす</string>
+    <string name="graphic_name">Katherine</string>
     <string name="date">Fecha:</string>
-    <string name="date_value">Diciembre 2023</string>
+    <string name="date_value">Diciembre 2023 - Enero 2024</string>
 
     <string name="menu_title">Tarjetas</string>
     <string name="card_mode">J->E</string>

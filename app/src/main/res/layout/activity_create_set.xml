@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CardActivity"
-    android:onClick="manageCard">
+    android:gravity="center"
+    tools:context=".CreateSetActivity">
+
+    <TextView
+        android:id="@+id/file_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="prueba"/>
 
     <EditText
         android:id="@+id/table_name"
@@ -17,13 +23,38 @@
         android:textSize="30sp"
         android:hint="Nombre del set"
         android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"/>
+        android:layout_marginEnd="30dp"
+        android:visibility="gone"/>
 
     <Button
+        android:id="@+id/add_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="createSet"
-        android:text="Agregar" />
+        android:text="Agregar"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/manually"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:onClick="createManual"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:text="Crear manualmente" />
+
+    <Button
+        android:id="@+id/csv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:onClick="createFromCSV"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:text="Crear por archivo .csv" />
 
 </LinearLayout>
