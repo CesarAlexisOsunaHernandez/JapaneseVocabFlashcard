@@ -4,19 +4,19 @@
         <menu android:checkableBehavior="single">
             <item
                 android:id="@+id/cards"
-                android:icon="@android:drawable/radiobutton_off_background"
+                android:icon="@drawable/cards"
                 android:textStyle="italic"
                 android:title="@string/cards"/>
 
             <item
                 android:id="@+id/addset"
-                android:icon="@android:drawable/ic_menu_add"
+                android:icon="@drawable/add"
                 android:textStyle="italic"
                 android:title="@string/addcard"/>
 
             <item
                 android:id="@+id/delset"
-                android:icon="@android:drawable/ic_menu_delete"
+                android:icon="@drawable/delete"
                 android:textStyle="italic"
                 android:title="Eliminar set"/>
         </menu>
@@ -26,12 +26,12 @@
         <menu>
             <item
                 android:id="@+id/card_mode"
-                android:icon="@android:drawable/ic_menu_manage"
+                android:icon="@drawable/esp_jap"
                 android:textStyle="italic"
                 android:title="@string/card_mode" />
             <item
                 android:id="@+id/review_mode"
-                android:icon="@android:drawable/ic_menu_manage"
+                android:icon="@drawable/kanji_y_kana"
                 android:textStyle="italic"
                 android:title="@string/review_mode1" />
         </menu>
@@ -41,13 +41,13 @@
         <menu>
             <item
                 android:id="@+id/message_dev"
-                android:icon="@android:drawable/sym_action_chat"
+                android:icon="@drawable/contact"
                 android:textStyle="italic"
                 android:title="@string/contact_dev"/>
 
             <item
                 android:id="@+id/credits"
-                android:icon="@android:drawable/ic_dialog_info"
+                android:icon="@drawable/credits"
                 android:textStyle="italic"
                 android:title="@string/credits"/>
 
