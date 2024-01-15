@@ -67,7 +67,7 @@ public class DeleteSetActivity extends AppCompatActivity {
 
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> listTables, View itemView, int position, long id) {
-                db.execSQL("DROP TABLE " + tables.get((int)(id)));
+                db.execSQL("DROP TABLE " + tables.get((int)(id)).replace(' ','$'));
 
                 Intent intent = new Intent(DeleteSetActivity.this, MainActivity.class);
                 startActivity(intent);

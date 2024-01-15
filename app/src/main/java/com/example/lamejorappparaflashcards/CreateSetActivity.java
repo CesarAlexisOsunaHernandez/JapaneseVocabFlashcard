@@ -1,23 +1,24 @@
 package com.example.lamejorappparaflashcards;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class CreateSetActivity extends AppCompatActivity {
 
@@ -35,7 +36,6 @@ public class CreateSetActivity extends AppCompatActivity {
 
         String tableName = editText.getText().toString();
         tableName = tableName.replace(' ', '$');
-        System.out.println(tableName);
 
         if(!tableName.equals("")){
             db = dbh.getReadableDatabase();
@@ -58,56 +58,72 @@ public class CreateSetActivity extends AppCompatActivity {
         CSVBtn.setVisibility(View.GONE);
     }
 
-    public void createFromCSV(View view) {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("*/*");
+    public void createFromCSV(View view){
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("text/*");
 
-        try {
-            startActivityForResult(Intent.createChooser(intent, "Select a file"), 100);
-        }catch (Exception e){
-            System.out.println("Error");
-        }
+        // Optionally, specify a URI for the file that should appear in the
+        // system file picker when it loads.
+
+        startActivityForResult(intent, 5);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,
-                                    @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode,
+                                 Intent resultData) {
+        super.onActivityResult(requestCode, resultCode, resultData);
+        List<String> csv;
+        Context context = this;
+        SQLiteDatabase db;
+        DatabaseHelper dbh = new DatabaseHelper(context);
+        db = dbh.getReadableDatabase();
 
-        System.out.println("1");
-        super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("2");
-        TextView text = findViewById(R.id.file_name);
-        text.setVisibility(View.VISIBLE);
-        System.out.println("3");
-        if (requestCode == 100 && resultCode == RESULT_OK && data != null){
-            System.out.println("4");
-            Uri uri = data.getData();
-            //assert uri != null;
-            String path = uri.getPath();
-            //assert path != null;
-            String pathTrue = path.substring(path.indexOf(':') + 1);
-            System.out.println(path);
-            System.out.println(pathTrue);
-            File file = new File(path);
-
-//            System.out.println("2");
-//            byte buffer[] = new byte[2];
-//            try {
-//                file.read(buffer,0,1);
-//            } catch (IOException e) {
-//                System.out.println("Oops2");
-//            }
-//            System.out.println(buffer);
-            //text.setText(file.toString());
-
-//            try {
-//
-//            } catch (FileNotFoundException e) {
-//                throw new RuntimeException(e);
-//            }
-
-            text.setText("Path: " + path + "\n\n" + "File name: " + file.canRead() );
+        if (requestCode == 5 && resultCode == Activity.RESULT_OK) {
+            // The result data contains a URI for the document or directory that
+            // the user selected.
+            Uri uri = null;
+            if (resultData != null) {
+                uri = resultData.getData();
+                try {
+                    csv = readTextFromUri(uri);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                for(int i = 0; i < csv.size(); i+=3){
+                    if (i == 0){
+                        db.execSQL("CREATE TABLE " + csv.get(i).replace(' ','$') + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, F_TEXT TEXT, K_TEXT TEXT, B_TEXT TEXT);");
+                    }else {
+                        dbh.insertCard(db, csv.get(i-2), csv.get(i-1), csv.get(i), csv.get(0).replace(' ','$'));
+                    }
+                }
+            }
         }
     }
+
+    private List<String> readTextFromUri(Uri uri) throws IOException {
+        StringBuilder stringBuilder = new StringBuilder();
+        List<String> content = new ArrayList<>();
+        try (InputStream inputStream =
+                     getContentResolver().openInputStream(uri);
+             BufferedReader reader = new BufferedReader(
+                     new InputStreamReader(Objects.requireNonNull(inputStream)))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(",");
+
+                if(row.length > 1){
+                    content.add(row[0]);
+                    content.add(row[1]);
+                    content.add(row[2]);
+                }else{
+                    content.add(row[0]);
+                }
+
+                stringBuilder.append(line);
+            }
+        }
+        return content;
+    }
+
 }
