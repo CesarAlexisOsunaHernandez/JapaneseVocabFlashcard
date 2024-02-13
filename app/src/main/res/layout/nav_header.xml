@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/red"
-            android:textSize="10sp"
+            android:textSize="11sp"
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginStart="40dp"
@@ -36,18 +36,17 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
         android:scaleType="centerCrop"
         android:scaleY="0.80"
         android:scaleX="0.80"
         android:layout_marginStart="-18dp"
-        android:src="@drawable/benka_nav_header"
-        />
+        android:src="@drawable/benka_nav_header" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
         android:scaleType="centerCrop"
         android:layout_gravity="end|bottom"
         android:src="@drawable/girl_nav_header"/>
