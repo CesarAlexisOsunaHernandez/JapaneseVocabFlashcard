@@ -13,6 +13,9 @@
         android:theme="@style/Theme.LaMejorAppParaFlashcards"
         tools:targetApi="31">
         <activity
+            android:name=".ValentineActivity"
+            android:exported="false" />
+        <activity
             android:name=".DeleteSetActivity"
             android:exported="false" />
         <activity

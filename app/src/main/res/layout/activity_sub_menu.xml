@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/pink2"
     tools:context=".SubMenuActivity">
 
     <Button
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Estudiar"
+        android:layout_marginTop="10dp"
         android:onClick="studyCards"/>
 
     <Button
@@ -20,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Añadir palabras"
+        android:layout_marginTop="10dp"
         android:onClick="addCard"/>
 
     <Button
@@ -28,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Eliminar palabras"
+        android:layout_marginTop="10dp"
         android:onClick="delCard"/>
 
     <Button
@@ -36,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Mostrar palabras"
+        android:layout_marginTop="10dp"
         android:onClick="showContent"/>
 
 </LinearLayout>

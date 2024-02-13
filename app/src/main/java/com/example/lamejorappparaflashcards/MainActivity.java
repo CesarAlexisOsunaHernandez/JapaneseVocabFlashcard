@@ -14,6 +14,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -105,6 +106,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             toast.show();
             kanjiKana = !kanjiKana;
+        }
+
+        if (id == R.id.valentine_card){
+            intent = new Intent(this, ValentineActivity.class);
+            startActivity(intent);
+            Toast toast = Toast.makeText(this, "Elije una palabra para adjuntar a tu carta", Toast.LENGTH_LONG);
+            toast.show();
+
+//            EditText messageView = (EditText) findViewById(R.id.message);
+//            String messageText = messageView.getText().toString();
+//            Intent intent = new Intent(this, ReceiveMessageActivity.class);
+//            intent.putExtra(ReceiveMessageActivity.EXTRA_MESSAGE, messageText);
+//            startActivity(intent);
         }
 
         if (id == R.id.message_dev){

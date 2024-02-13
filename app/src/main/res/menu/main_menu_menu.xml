@@ -3,6 +3,10 @@
     <item android:title="@string/menu_title">
         <menu android:checkableBehavior="single">
             <item
+                android:id="@+id/valentine_card"
+                android:icon="@drawable/heart"
+                android:title="Enviar carta" />
+            <item
                 android:id="@+id/cards"
                 android:icon="@drawable/cards"
                 android:textStyle="italic"

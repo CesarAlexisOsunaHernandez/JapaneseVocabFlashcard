@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="180dp"
+    android:background="@color/pink2"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <LinearLayout
@@ -14,7 +15,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/red"
+            android:background="@color/pink1"
             android:textColor="@color/white"
             android:height="60dp"
             android:textSize="17sp"
@@ -26,12 +27,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/red"
+            android:textColor="@color/pink1"
             android:textSize="11sp"
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginStart="40dp"
             android:layout_marginBottom="5dp"
+            android:textStyle="bold"
             android:text="LEARN NEW WORDS"/>
     </LinearLayout>
 
