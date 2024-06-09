@@ -15,7 +15,6 @@
         android:layout_gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="48sp"
-        android:textStyle="italic"
         android:text="prueba"/>
 
     <TextView
@@ -26,7 +25,6 @@
         android:layout_gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="36sp"
-        android:textStyle="italic"
         android:text="prueba"/>
 
     <TextView
@@ -38,7 +36,6 @@
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="24sp"
-        android:textStyle="italic"
         android:text="prueba"/>
 
     <Button

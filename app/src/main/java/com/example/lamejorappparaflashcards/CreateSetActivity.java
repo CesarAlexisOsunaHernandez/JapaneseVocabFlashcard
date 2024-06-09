@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -88,6 +89,8 @@ public class CreateSetActivity extends AppCompatActivity {
                 try {
                     csv = readTextFromUri(uri);
                 } catch (IOException e) {
+                    Toast toast = Toast.makeText(this,"Error al leer archivo", Toast.LENGTH_SHORT);
+                    toast.show();
                     throw new RuntimeException(e);
                 }
                 for(int i = 0; i < csv.size(); i+=3){
@@ -97,6 +100,8 @@ public class CreateSetActivity extends AppCompatActivity {
                         dbh.insertCard(db, csv.get(i-2), csv.get(i-1), csv.get(i), csv.get(0).replace(' ','$'));
                     }
                 }
+                Toast toast = Toast.makeText(this,"Set creado con exito", Toast.LENGTH_SHORT);
+                toast.show();
             }
         }
     }

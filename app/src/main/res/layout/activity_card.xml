@@ -7,15 +7,44 @@
     tools:context=".CardActivity"
     android:onClick="manageCard">
 
-    <TextView
-        android:id="@+id/front"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="48sp"
-        android:textStyle="italic" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/front"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="48sp"
+            android:text="compu"/>
+
+        <TextView
+            android:id="@+id/slash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="48sp"
+            android:text="/"/>
+
+        <TextView
+            android:id="@+id/front2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:fontFamily="@font/handwritten"
+            android:textSize="48sp"
+            android:text="mano"/>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/front_h"
@@ -25,7 +54,7 @@
         android:layout_gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="36sp"
-        android:textStyle="italic" />
+        android:text="hiragana"/>
 
     <TextView
         android:id="@+id/back"
@@ -36,7 +65,7 @@
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="24sp"
-        android:textStyle="italic" />
+        android:text="significado"/>
 
     <Button
         android:id="@+id/again"
@@ -67,11 +96,21 @@
             android:text="BIEN"/>
 
         <Button
+            android:id="@+id/almost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+            android:gravity="center"
+            android:onClick="updateScore"
+            android:text="CASI" />
+
+        <Button
             android:id="@+id/incorrect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="136dp"
+            android:layout_marginStart="15dp"
             android:gravity="center"
             android:onClick="updateScore"
             android:text="MAL" />
