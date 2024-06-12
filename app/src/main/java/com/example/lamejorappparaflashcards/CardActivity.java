@@ -229,6 +229,7 @@ public class CardActivity extends AppCompatActivity {
         }
 
         corrBtn.setVisibility(View.INVISIBLE);
+        almstBtn.setVisibility(View.INVISIBLE);
         incorrBtn.setVisibility(View.INVISIBLE);
 
         //manageCard(view);
