@@ -7,15 +7,31 @@
     tools:context=".CardActivity"
     android:onClick="manageCard">
 
-    <TextView
-        android:id="@+id/front"
+    <FrameLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/front"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="40sp"
+            android:text="compu"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/front2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:fontFamily="@font/handwritten"
         android:textSize="48sp"
-        android:text="prueba"/>
+        android:text="mano"/>
 
     <TextView
         android:id="@+id/front_h"
@@ -25,56 +41,61 @@
         android:layout_gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="36sp"
-        android:text="prueba"/>
+        android:text="hiragana"/>
 
     <TextView
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="24sp"
-        android:text="prueba"/>
+        android:text="significado"/>
 
     <Button
         android:id="@+id/again"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="265dp"
+        android:layout_height="66dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:paddingStart="50dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="50dp"
-        android:paddingBottom="20dp"
+        android:gravity="center"
+        android:onClick="restart"
         android:text="Reiniciar lista"
-        android:textSize="20sp"
-        android:onClick="restart"/>
+        android:textSize="34sp" />
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center">
 
         <Button
             android:id="@+id/correct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginStart="50dp"
             android:onClick="updateScore"
             android:text="BIEN"/>
+
+        <Button
+            android:id="@+id/almost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:gravity="center"
+            android:onClick="updateScore"
+            android:text="CASI" />
 
         <Button
             android:id="@+id/incorrect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:layout_marginStart="150dp"
             android:gravity="center"
-            android:layout_marginEnd="50dp"
             android:onClick="updateScore"
             android:text="MAL" />
 
-    </GridLayout>
+    </LinearLayout>
 
 </LinearLayout>

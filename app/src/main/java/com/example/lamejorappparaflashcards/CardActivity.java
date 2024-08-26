@@ -1,10 +1,8 @@
 package com.example.lamejorappparaflashcards;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Context;
+//import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,16 +10,13 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
 
 public class CardActivity extends AppCompatActivity {
-    private Context context;
+    //private Context context;
     private String Table;
     private boolean E2J;
     private boolean KK;
@@ -35,7 +30,7 @@ public class CardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        context = this;
+        //context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
 
@@ -43,6 +38,7 @@ public class CardActivity extends AppCompatActivity {
         Table = Table.replace(' ', '_');
         E2J = (boolean) getIntent().getExtras().get("E2J");
         KK = (boolean) getIntent().getExtras().get("KK");
+        boolean NF = (boolean) getIntent().getExtras().get("NF");
 
         databaseHelper = new DatabaseHelper(this);
 
@@ -72,6 +68,12 @@ public class CardActivity extends AppCompatActivity {
             TextView f2_text = findViewById(R.id.front2);
             TextView h_text = findViewById(R.id.front_h);
 
+            if (NF){
+                f2_text.setVisibility(View.GONE);
+            }else{
+                f_text.setVisibility(View.GONE);
+            }
+
             if (savedInstanceState != null) {
                 used = savedInstanceState.getBooleanArray("used");
                 cardId = savedInstanceState.getInt("cardId");
@@ -96,6 +98,7 @@ public class CardActivity extends AppCompatActivity {
 
                     if (E2J) {
                         f_text.setVisibility(View.INVISIBLE);
+                        f2_text.setVisibility(View.INVISIBLE);
                         h_text.setVisibility(View.INVISIBLE);
                         b_text.setVisibility(View.VISIBLE);
                     }
@@ -113,6 +116,7 @@ public class CardActivity extends AppCompatActivity {
     public void manageCard(View view){
         TextView b_text = findViewById(R.id.back);
         TextView f_text = findViewById(R.id.front);
+        TextView f2_text = findViewById(R.id.front2);
         TextView k_text = findViewById(R.id.front_h);
 
         View corrBtn   = findViewById(R.id.correct);
@@ -130,6 +134,7 @@ public class CardActivity extends AppCompatActivity {
             }
         }else if(f_text.getVisibility() == View.INVISIBLE && k_text.getVisibility() == View.INVISIBLE){ //Si los dos textos de arriba son invisibles
             f_text.setVisibility(View.VISIBLE);
+            f2_text.setVisibility(View.VISIBLE);
             corrBtn.setVisibility(View.VISIBLE);
             almstBtn.setVisibility(View.VISIBLE);
             incorrBtn.setVisibility(View.VISIBLE);
@@ -178,6 +183,7 @@ public class CardActivity extends AppCompatActivity {
 
                 if (E2J){
                     f_text.setVisibility(View.INVISIBLE);
+                    f2_text.setVisibility(View.INVISIBLE);
                     h_text.setVisibility(View.INVISIBLE);
                     b_text.setVisibility(View.VISIBLE);
                 }
@@ -218,7 +224,6 @@ public class CardActivity extends AppCompatActivity {
 
     public void updateScore(View view){
         View corrBtn   = findViewById(R.id.correct);
-        View slash   = findViewById(R.id.slash);
         View almstBtn = findViewById(R.id.almost);
         View incorrBtn = findViewById(R.id.incorrect);
 
@@ -244,7 +249,6 @@ public class CardActivity extends AppCompatActivity {
             againBtn.setVisibility(View.VISIBLE);
 
             f_text.setText("Correctas");
-            slash.setVisibility(View.GONE);
             f2_text.setVisibility(View.GONE);
             h_text.setVisibility(View.INVISIBLE);
             b_text.setText(Float.toString(correct) + " / " + Integer.toString(size));

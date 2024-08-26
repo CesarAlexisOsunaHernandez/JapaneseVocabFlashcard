@@ -21,6 +21,7 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private boolean espaToJapa;
     private boolean kanjiKana;
+    private boolean normalFont;
     private SQLiteOpenHelper databaseHelper;
     private SQLiteDatabase db;
     @Override
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         espaToJapa = false;
         kanjiKana  = true;
+        normalFont = true;
 
         databaseHelper = new DatabaseHelper(this);
 
@@ -64,6 +66,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent = new Intent(this, TablesListActivity.class);
             intent.putExtra("E2J", espaToJapa);
             intent.putExtra("KK", kanjiKana);
+            intent.putExtra("NF", normalFont);
+            intent.putExtra("all", true);
+            intent.putExtra("download", false);
             startActivity(intent);
         }
 
@@ -73,7 +78,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         if (id == R.id.delset){
-            intent = new Intent(this, DeleteSetActivity.class);
+            intent = new Intent(this, TablesListActivity.class);
+            intent.putExtra("E2J", false);
+            intent.putExtra("KK", false);
+            intent.putExtra("all", false);
+            intent.putExtra("download", false);
+            startActivity(intent);
+        }
+
+        if (id == R.id.downset){
+            intent = new Intent(this, TablesListActivity.class);
+            intent.putExtra("E2J", false);
+            intent.putExtra("KK", false);
+            intent.putExtra("all", false);
+            intent.putExtra("download", true);
             startActivity(intent);
         }
 
@@ -105,6 +123,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             toast.show();
             kanjiKana = !kanjiKana;
+        }
+
+        if (id == R.id.font_type) {
+            Toast toast;
+
+            if (normalFont){
+                toast = Toast.makeText(this, "A mano", Toast.LENGTH_SHORT);
+                item.setTitle("A MANO");
+
+            }else{
+                toast = Toast.makeText(this, "Normal", Toast.LENGTH_SHORT);
+                item.setTitle("NORMAL");
+            }
+            toast.show();
+            normalFont = !normalFont;
         }
 
         if (id == R.id.message_dev){

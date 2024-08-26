@@ -2,17 +2,12 @@ package com.example.lamejorappparaflashcards;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -20,8 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SetContentActivity extends AppCompatActivity {
-    //private boolean espaToJapa;
-    //private boolean kanjiKana;
     SQLiteDatabase db;
     private String Table;
     private int size;
@@ -37,8 +30,6 @@ public class SetContentActivity extends AppCompatActivity {
 
         db = databaseHelper.getReadableDatabase();
 
-        //espaToJapa = (boolean) getIntent().getExtras().get("E2J");
-        //kanjiKana = (boolean) getIntent().getExtras().get("KK");
         Table = (String) getIntent().getExtras().get("unit_table");
         Table = Table.replace(' ', '_');
         size = (int) DatabaseUtils.queryNumEntries(db, Table);
@@ -80,38 +71,5 @@ public class SetContentActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(this,"Set de cartas vacio", Toast.LENGTH_SHORT);
             toast.show();
         }
-
-
-//        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView<?> listTables, View itemView, int position, long id) {
-//                //Intent intent = new Intent(TablesListActivity.this, CardActivity.class);
-//                Intent intent = new Intent(SetContentActivity.this, SubMenuActivity.class);
-//                //intent.putExtra("E2J", espaToJapa);
-//                //intent.putExtra("KK", kanjiKana);
-//                intent.putExtra("unit_table", id);
-//                startActivity(intent);
-//            }
-//        };
-//
-//        tablesView.setOnItemClickListener(itemClickListener);
     }
-
-//    private String getTableName(long id){
-//        Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
-//        int i = -1;
-//        if (cursor != null) {
-//            while (cursor.moveToNext()) {
-//                // Retrieve table names
-//                String tableName = cursor.getString(0);
-//
-//                if (!tableName.equals("android_metadata") && !tableName.equals("sqlite_sequence")) {
-//                    i++;
-//                }
-//                if (i == id)
-//                    return tableName;
-//            }
-//
-//        }
-//        return "-1";
-//    }
 }

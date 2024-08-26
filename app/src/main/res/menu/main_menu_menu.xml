@@ -5,20 +5,22 @@
             <item
                 android:id="@+id/cards"
                 android:icon="@drawable/cards"
-                android:textStyle="italic"
                 android:title="@string/cards"/>
 
             <item
                 android:id="@+id/addset"
                 android:icon="@drawable/add"
-                android:textStyle="italic"
                 android:title="@string/addcard"/>
 
             <item
                 android:id="@+id/delset"
                 android:icon="@drawable/delete"
-                android:textStyle="italic"
                 android:title="Eliminar set"/>
+
+            <item
+                android:id="@+id/downset"
+                android:icon="@android:drawable/stat_sys_download"
+                android:title="Descargar set"/>
         </menu>
     </item>
 
@@ -27,13 +29,15 @@
             <item
                 android:id="@+id/card_mode"
                 android:icon="@drawable/esp_jap"
-                android:textStyle="italic"
                 android:title="@string/card_mode" />
             <item
                 android:id="@+id/review_mode"
                 android:icon="@drawable/kanji_y_kana"
-                android:textStyle="italic"
                 android:title="@string/review_mode1" />
+            <item
+                android:id="@+id/font_type"
+                android:icon="@android:drawable/ic_input_get"
+                android:title="NORMAL" />
         </menu>
     </item>
     
@@ -42,13 +46,11 @@
             <item
                 android:id="@+id/message_dev"
                 android:icon="@drawable/contact"
-                android:textStyle="italic"
                 android:title="@string/contact_dev"/>
 
             <item
                 android:id="@+id/credits"
                 android:icon="@drawable/credits"
-                android:textStyle="italic"
                 android:title="@string/credits"/>
 
         </menu>

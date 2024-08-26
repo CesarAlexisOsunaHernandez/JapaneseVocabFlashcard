@@ -1,23 +1,16 @@
 package com.example.lamejorappparaflashcards;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import com.google.android.material.tabs.TabLayout;
 
 public class SubMenuActivity extends AppCompatActivity {
     private String Table;
     private boolean espaToJapa;
     private boolean kanjiKana;
+    private boolean normalFont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +21,7 @@ public class SubMenuActivity extends AppCompatActivity {
         Table = Table.replace(' ', '_');
         espaToJapa = (boolean) getIntent().getExtras().get("E2J");
         kanjiKana = (boolean) getIntent().getExtras().get("KK");
+        normalFont = (boolean) getIntent().getExtras().get("NF");
 
         if (Table.equals("KATAKANA") || Table.equals("UNIT_FIVE") || Table.equals("UNIT_SIX") || Table.equals("UNIT_SEVEN") || Table.equals("UNIT_EIGHT")){
             Button add = findViewById(R.id.add_card_sub);
@@ -42,6 +36,7 @@ public class SubMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CardActivity.class);
         intent.putExtra("E2J", espaToJapa);
         intent.putExtra("KK", kanjiKana);
+        intent.putExtra("NF", normalFont);
         intent.putExtra("unit_table", Table);
         startActivity(intent);
     }
@@ -50,6 +45,7 @@ public class SubMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CreateCardActivity.class);
         intent.putExtra("E2J", espaToJapa);
         intent.putExtra("KK", kanjiKana);
+        intent.putExtra("NF", normalFont);
         intent.putExtra("unit_table", Table);
         startActivity(intent);
     }
@@ -58,6 +54,7 @@ public class SubMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DeleteCardActivity.class);
         intent.putExtra("E2J", espaToJapa);
         intent.putExtra("KK", kanjiKana);
+        intent.putExtra("NF", normalFont);
         intent.putExtra("unit_table", Table);
         startActivity(intent);
     }
@@ -74,6 +71,9 @@ public class SubMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TablesListActivity.class);
         intent.putExtra("E2J", espaToJapa);
         intent.putExtra("KK", kanjiKana);
+        intent.putExtra("NF", normalFont);
+        intent.putExtra("all", true);
+        intent.putExtra("download", false);
         startActivity(intent);
     }
 }
