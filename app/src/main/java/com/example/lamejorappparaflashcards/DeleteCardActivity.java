@@ -95,6 +95,7 @@ public class DeleteCardActivity extends AppCompatActivity {
                 intent.putExtra("E2J", espaToJapa);
                 intent.putExtra("KK", kanjiKana);
                 intent.putExtra("unit_table", Table);
+                intent.putExtra("NF", true);
                 startActivity(intent);
             }
         };

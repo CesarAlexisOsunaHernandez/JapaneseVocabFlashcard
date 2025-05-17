@@ -61,8 +61,14 @@ public class TablesListActivity extends AppCompatActivity {
                     if (!tableName.equals("android_metadata") && !tableName.equals("sqlite_sequence")){
                             if(all){
                                 tablesReal.add(tableName.replace('_', ' '));
-                                if (tableName.equals("KATAKANA"))
-                                    tableName = this.getString(R.string.katakana);
+                                if (tableName.equals("UNIT_ONE"))
+                                    tableName = this.getString(R.string.unit1);
+                                if (tableName.equals("UNIT_TWO"))
+                                    tableName = this.getString(R.string.unit2);
+                                if (tableName.equals("UNIT_THREE"))
+                                    tableName = this.getString(R.string.unit3);
+                                if (tableName.equals("UNIT_FOUR"))
+                                    tableName = this.getString(R.string.unit4);
                                 if (tableName.equals("UNIT_FIVE"))
                                     tableName = this.getString(R.string.unit5);
                                 if (tableName.equals("UNIT_SIX"))
@@ -73,8 +79,7 @@ public class TablesListActivity extends AppCompatActivity {
                                     tableName = this.getString(R.string.unit8);
                                 tables.add(tableName.replace('$', ' '));
                             }else{
-                                if (!tableName.equals("KATAKANA") && !tableName.equals("UNIT_FIVE") && !tableName.equals("UNIT_SIX") &&
-                                        !tableName.equals("UNIT_SEVEN") && !tableName.equals("UNIT_EIGHT")) {
+                                if (!tableName.equals("HIRAGANA") && !tableName.equals("KATAKANA") && !tableName.equals("UNIT_ONE") && !tableName.equals("UNIT_TWO") && !tableName.equals("UNIT_THREE") && !tableName.equals("UNIT_FOUR") && !tableName.equals("UNIT_FIVE") && !tableName.equals("UNIT_SIX") && !tableName.equals("UNIT_SEVEN") && !tableName.equals("UNIT_EIGHT")) {
                                     tables.add(tableName.replace('$', ' '));
                                 }
                             }

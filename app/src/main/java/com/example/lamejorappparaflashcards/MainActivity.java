@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent.putExtra("KK", false);
             intent.putExtra("all", false);
             intent.putExtra("download", false);
+            intent.putExtra("NF", normalFont);
             startActivity(intent);
         }
 
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent.putExtra("KK", false);
             intent.putExtra("all", false);
             intent.putExtra("download", true);
+            intent.putExtra("NF", normalFont);
             startActivity(intent);
         }
 

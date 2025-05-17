@@ -23,7 +23,7 @@ public class SubMenuActivity extends AppCompatActivity {
         kanjiKana = (boolean) getIntent().getExtras().get("KK");
         normalFont = (boolean) getIntent().getExtras().get("NF");
 
-        if (Table.equals("KATAKANA") || Table.equals("UNIT_FIVE") || Table.equals("UNIT_SIX") || Table.equals("UNIT_SEVEN") || Table.equals("UNIT_EIGHT")){
+        if (Table.equals("HIRAGANA") || Table.equals("KATAKANA") || Table.equals("UNIT_ONE") || Table.equals("UNIT_TWO") || Table.equals("UNIT_THREE") || Table.equals("UNIT_FOUR") || Table.equals("UNIT_FIVE") || Table.equals("UNIT_SIX") || Table.equals("UNIT_SEVEN") || Table.equals("UNIT_EIGHT")){
             Button add = findViewById(R.id.add_card_sub);
             add.setVisibility(View.GONE);
 

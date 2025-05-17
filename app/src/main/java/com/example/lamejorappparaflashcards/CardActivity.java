@@ -67,17 +67,21 @@ public class CardActivity extends AppCompatActivity {
             TextView f_text = findViewById(R.id.front);
             TextView f2_text = findViewById(R.id.front2);
             TextView h_text = findViewById(R.id.front_h);
+            TextView h2_text = findViewById(R.id.front_h2);
+            TextView count = findViewById(R.id.card_count);
 
             if (NF){
                 f2_text.setVisibility(View.GONE);
+                h2_text.setVisibility(View.GONE);
             }else{
                 f_text.setVisibility(View.GONE);
+                h_text.setVisibility(View.GONE);
             }
 
             if (savedInstanceState != null) {
                 used = savedInstanceState.getBooleanArray("used");
                 cardId = savedInstanceState.getInt("cardId");
-                correct = savedInstanceState.getInt("correct");
+                correct = savedInstanceState.getFloat("correct");
 
                 Cursor cursor = db.query(Table, new String[]{"F_TEXT", "K_TEXT", "B_TEXT"}, "_id = ?", new String[]{Integer.toString(cardId + 1)}, null, null, null);
 
@@ -102,6 +106,9 @@ public class CardActivity extends AppCompatActivity {
                         h_text.setVisibility(View.INVISIBLE);
                         b_text.setVisibility(View.VISIBLE);
                     }
+
+                    String aux = countUsed() + "/" + used.length;  //Contador de cartas
+                    count.setText(aux);
                 }
                 cursor.close();
             } else {
@@ -141,7 +148,7 @@ public class CardActivity extends AppCompatActivity {
 
             if (!f_text.getText().equals(k_text.getText()))
                 k_text.setVisibility(View.VISIBLE);
-        }else if(!allUsed(size) && corrBtn.getVisibility() != View.VISIBLE){
+        }else if(countUsed() < used.length && corrBtn.getVisibility() != View.VISIBLE){
             getDatabaseElement(Table);
         }
     }
@@ -151,7 +158,9 @@ public class CardActivity extends AppCompatActivity {
             TextView f_text = findViewById(R.id.front);
             TextView f2_text = findViewById(R.id.front2);
             TextView h_text = findViewById(R.id.front_h);
+            TextView h2_text = findViewById(R.id.front_h2);
             TextView b_text = findViewById(R.id.back);
+            TextView count = findViewById(R.id.card_count);
 
             h_text.setVisibility(View.VISIBLE);
 
@@ -174,9 +183,12 @@ public class CardActivity extends AppCompatActivity {
                 f_text.setText(frontText);
                 f2_text.setText(frontText);
 
-                if(frontHText.equals(frontText) || !KK)
+                if(frontHText.equals(frontText) || !KK) {
                     h_text.setVisibility(View.INVISIBLE);
+                    h2_text.setVisibility(View.INVISIBLE);
+                }
                 h_text.setText(frontHText);
+                h2_text.setText(frontHText);
 
                 b_text.setVisibility(View.INVISIBLE);
                 b_text.setText(backText);
@@ -185,8 +197,12 @@ public class CardActivity extends AppCompatActivity {
                     f_text.setVisibility(View.INVISIBLE);
                     f2_text.setVisibility(View.INVISIBLE);
                     h_text.setVisibility(View.INVISIBLE);
+                    h2_text.setVisibility(View.INVISIBLE);
                     b_text.setVisibility(View.VISIBLE);
                 }
+
+                String aux = countUsed() + "/" + used.length;  //Contador de cartas
+                count.setText(aux);
             }
             cursor.close();
 
@@ -196,13 +212,21 @@ public class CardActivity extends AppCompatActivity {
         }
     }
 
-    private boolean allUsed(int size){
-        for(int i = 0; i < size; i++){
-            if(!used[i]){
-                return false;
-            }
-        }
-        return true;
+//    private boolean allUsed(int size){
+//        for(int i = 0; i < size; i++){
+//            if(!used[i]){
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+    
+    private int countUsed(){
+        int j = 0;
+        for (boolean i: used)
+            if (i)
+                j++;
+        return j;
     }
 
     public void restart(View view){
@@ -238,20 +262,24 @@ public class CardActivity extends AppCompatActivity {
         incorrBtn.setVisibility(View.INVISIBLE);
 
         //manageCard(view);
-        if(allUsed(size)){
+        if(countUsed() == used.length){
             View againBtn = findViewById(R.id.again);
 
             TextView f_text = findViewById(R.id.front);
             TextView f2_text = findViewById(R.id.front2);
             TextView h_text = findViewById(R.id.front_h);
+            TextView h2_text = findViewById(R.id.front_h2);
             TextView b_text = findViewById(R.id.back);
+            TextView count = findViewById(R.id.card_count);
 
             againBtn.setVisibility(View.VISIBLE);
 
             f_text.setText("Correctas");
             f2_text.setVisibility(View.GONE);
             h_text.setVisibility(View.INVISIBLE);
-            b_text.setText(Float.toString(correct) + " / " + Integer.toString(size));
+            h2_text.setVisibility(View.GONE);
+            count.setVisibility(View.GONE);
+            b_text.setText(correct + " / " + size);    //TO:DO
 
             db.close();
         }else{

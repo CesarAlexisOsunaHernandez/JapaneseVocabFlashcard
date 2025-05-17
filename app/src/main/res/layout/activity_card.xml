@@ -7,20 +7,16 @@
     tools:context=".CardActivity"
     android:onClick="manageCard">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/front"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textSize="40sp"
-            android:text="compu"/>
-
-    </FrameLayout>
+    <TextView
+        android:id="@+id/front"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="compu"
+        android:textSize="40sp"
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/front2"
@@ -37,9 +33,21 @@
         android:id="@+id/front_h"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="hiragana"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="36sp"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/front_h2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:fontFamily="@font/handwritten"
         android:textSize="36sp"
         android:text="hiragana"/>
 
@@ -54,54 +62,70 @@
         android:textSize="24sp"
         android:text="significado"/>
 
-    <Button
-        android:id="@+id/again"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="200dp"
-        android:paddingStart="50dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="50dp"
-        android:paddingBottom="20dp"
-        android:text="Reiniciar lista"
-        android:textSize="34sp"
-        android:onClick="restart"/>
-
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/correct"
+            android:id="@+id/again"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginStart="50dp"
-            android:onClick="updateScore"
-            android:text="BIEN"/>
+            android:onClick="restart"
+            android:paddingStart="50dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="50dp"
+            android:paddingBottom="20dp"
+            android:text="Reiniciar lista"
+            android:textSize="34sp" />
 
-        <Button
-            android:id="@+id/almost"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:layout_gravity="center|bottom"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/correct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:onClick="updateScore"
+                android:text="BIEN"/>
+
+            <Button
+                android:id="@+id/almost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:gravity="center"
+                android:onClick="updateScore"
+                android:text="CASI" />
+
+            <Button
+                android:id="@+id/incorrect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:gravity="center"
+                android:onClick="updateScore"
+                android:text="MAL" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/card_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="15dp"
-            android:gravity="center"
-            android:onClick="updateScore"
-            android:text="CASI" />
+            android:layout_gravity="end|bottom"
+            android:layout_marginTop="15dp"
+            android:text="10/10"
+            android:textSize="20dp" />
 
-        <Button
-            android:id="@+id/incorrect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="15dp"
-            android:gravity="center"
-            android:onClick="updateScore"
-            android:text="MAL" />
-
-    </LinearLayout>
+    </FrameLayout>
 
 </LinearLayout>
