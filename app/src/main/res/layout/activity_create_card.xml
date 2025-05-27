@@ -6,6 +6,13 @@
     android:orientation="vertical"
     tools:context=".CreateCardActivity">
 
+    <TextView
+        android:id="@+id/create_card_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Carta no. 1"/>
+
     <EditText
         android:id="@+id/f_card"
         android:layout_width="match_parent"

@@ -4,17 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class CreateCardActivity extends AppCompatActivity {
     private String table;
     private boolean espaToJapa;
     private boolean kanjiKana;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,11 @@ public class CreateCardActivity extends AppCompatActivity {
         table = table.replace(' ', '_');
         espaToJapa = (boolean) getIntent().getExtras().get("E2J");
         kanjiKana = (boolean) getIntent().getExtras().get("KK");
+
+        SQLiteOpenHelper databaseHelper = new DatabaseHelper(this);
+        db = databaseHelper.getReadableDatabase();
+
+        updateCounter(db);
     }
 
     public void addCard(View view){
@@ -55,17 +63,21 @@ public class CreateCardActivity extends AppCompatActivity {
         EditText e = findViewById(R.id.e_card);
 
         if(!f.getText().toString().equals("") && !k.getText().toString().equals("") && !e.getText().toString().equals("")){
-            SQLiteOpenHelper databaseHelper = new DatabaseHelper(this);
-            SQLiteDatabase db = databaseHelper.getReadableDatabase();
-
             Context context = this;
             DatabaseHelper dbh = new DatabaseHelper(context);
             dbh.insertCard(db, f.getText().toString(), k.getText().toString(), e.getText().toString(), table);
+            updateCounter(db);
             return true;
         }else{
             Toast toast = Toast.makeText(this, "Llena todos campos", Toast.LENGTH_SHORT);
             toast.show();
         }
         return false;
+    }
+
+    private void updateCounter(SQLiteDatabase db){
+        String text = "Carta no. " + (int) (DatabaseUtils.queryNumEntries(db, table) + 1);
+        TextView counter = findViewById(R.id.create_card_counter);
+        counter.setText(text);
     }
 }
