@@ -20,6 +20,7 @@ public class CardActivity extends AppCompatActivity {
     private String Table;
     private boolean E2J;
     private boolean KK;
+    private boolean NF;
     private SQLiteOpenHelper databaseHelper;
     private SQLiteDatabase db;
 
@@ -30,6 +31,7 @@ public class CardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("onCreate");
         //context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
@@ -38,7 +40,7 @@ public class CardActivity extends AppCompatActivity {
         Table = Table.replace(' ', '_');
         E2J = (boolean) getIntent().getExtras().get("E2J");
         KK = (boolean) getIntent().getExtras().get("KK");
-        boolean NF = (boolean) getIntent().getExtras().get("NF");
+        NF = (boolean) getIntent().getExtras().get("NF");
 
         databaseHelper = new DatabaseHelper(this);
 
@@ -121,10 +123,12 @@ public class CardActivity extends AppCompatActivity {
     }
 
     public void manageCard(View view){
+        System.out.println("manageCard");
         TextView b_text = findViewById(R.id.back);
         TextView f_text = findViewById(R.id.front);
         TextView f2_text = findViewById(R.id.front2);
         TextView k_text = findViewById(R.id.front_h);
+        TextView k2_text = findViewById(R.id.front_h2);
 
         View corrBtn   = findViewById(R.id.correct);
         View almstBtn = findViewById(R.id.almost);
@@ -136,24 +140,39 @@ public class CardActivity extends AppCompatActivity {
             almstBtn.setVisibility(View.VISIBLE);
             incorrBtn.setVisibility(View.VISIBLE);
 
-            if(!f_text.getText().equals(k_text.getText()) && !KK) {
-                k_text.setVisibility(View.VISIBLE);
+            if (NF){
+                if(!f_text.getText().equals(k_text.getText()) && !KK) {
+                    k_text.setVisibility(View.VISIBLE);
+                }
+            }else{
+                if(!f2_text.getText().equals(k2_text.getText()) && !KK) {
+                    k2_text.setVisibility(View.VISIBLE);
+                }
             }
+
         }else if(f_text.getVisibility() == View.INVISIBLE && k_text.getVisibility() == View.INVISIBLE){ //Si los dos textos de arriba son invisibles
             f_text.setVisibility(View.VISIBLE);
-            f2_text.setVisibility(View.VISIBLE);
             corrBtn.setVisibility(View.VISIBLE);
             almstBtn.setVisibility(View.VISIBLE);
             incorrBtn.setVisibility(View.VISIBLE);
 
             if (!f_text.getText().equals(k_text.getText()))
                 k_text.setVisibility(View.VISIBLE);
+        }else if(f2_text.getVisibility() == View.INVISIBLE && k2_text.getVisibility() == View.INVISIBLE){ //Si los dos textos de arriba ESCRITOS A MANO son invisibles
+            f2_text.setVisibility(View.VISIBLE);
+            corrBtn.setVisibility(View.VISIBLE);
+            almstBtn.setVisibility(View.VISIBLE);
+            incorrBtn.setVisibility(View.VISIBLE);
+
+            if (!f2_text.getText().equals(k2_text.getText()))
+                k2_text.setVisibility(View.VISIBLE);
         }else if(countUsed() < used.length && corrBtn.getVisibility() != View.VISIBLE){
             getDatabaseElement(Table);
         }
     }
 
     protected void getDatabaseElement(String table){
+        System.out.println("getDatabaseElement");
         try {
             TextView f_text = findViewById(R.id.front);
             TextView f2_text = findViewById(R.id.front2);
@@ -162,7 +181,12 @@ public class CardActivity extends AppCompatActivity {
             TextView b_text = findViewById(R.id.back);
             TextView count = findViewById(R.id.card_count);
 
-            h_text.setVisibility(View.VISIBLE);
+            if (NF){
+                h_text.setVisibility(View.VISIBLE);
+            }else{
+                h2_text.setVisibility(View.VISIBLE);
+            }
+
 
             Random ran = new Random();
 
@@ -184,8 +208,11 @@ public class CardActivity extends AppCompatActivity {
                 f2_text.setText(frontText);
 
                 if(frontHText.equals(frontText) || !KK) {
-                    h_text.setVisibility(View.INVISIBLE);
-                    h2_text.setVisibility(View.INVISIBLE);
+                    if (NF){
+                        h_text.setVisibility(View.INVISIBLE);
+                    }else{
+                        h2_text.setVisibility(View.INVISIBLE);
+                    }
                 }
                 h_text.setText(frontHText);
                 h2_text.setText(frontHText);
@@ -193,13 +220,16 @@ public class CardActivity extends AppCompatActivity {
                 b_text.setVisibility(View.INVISIBLE);
                 b_text.setText(backText);
 
-                if (E2J){
+                if (E2J && NF){
                     f_text.setVisibility(View.INVISIBLE);
-                    f2_text.setVisibility(View.INVISIBLE);
                     h_text.setVisibility(View.INVISIBLE);
+                    b_text.setVisibility(View.VISIBLE);
+                } else if (E2J) {
+                    f2_text.setVisibility(View.INVISIBLE);
                     h2_text.setVisibility(View.INVISIBLE);
                     b_text.setVisibility(View.VISIBLE);
                 }
+                //b_text.setVisibility(View.VISIBLE);
 
                 String aux = countUsed() + "/" + used.length;  //Contador de cartas
                 count.setText(aux);
@@ -211,15 +241,6 @@ public class CardActivity extends AppCompatActivity {
             toast.show();
         }
     }
-
-//    private boolean allUsed(int size){
-//        for(int i = 0; i < size; i++){
-//            if(!used[i]){
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
     
     private int countUsed(){
         int j = 0;
@@ -230,6 +251,7 @@ public class CardActivity extends AppCompatActivity {
     }
 
     public void restart(View view){
+        System.out.println("restart");
         TextView againBtn = findViewById(R.id.again);
         againBtn.setVisibility(View.INVISIBLE);
 
@@ -247,6 +269,7 @@ public class CardActivity extends AppCompatActivity {
     }
 
     public void updateScore(View view){
+        System.out.println("updateScore");
         View corrBtn   = findViewById(R.id.correct);
         View almstBtn = findViewById(R.id.almost);
         View incorrBtn = findViewById(R.id.incorrect);
@@ -275,11 +298,12 @@ public class CardActivity extends AppCompatActivity {
             againBtn.setVisibility(View.VISIBLE);
 
             f_text.setText("Correctas");
+            f_text.setVisibility(View.VISIBLE);
             f2_text.setVisibility(View.GONE);
             h_text.setVisibility(View.INVISIBLE);
             h2_text.setVisibility(View.GONE);
             count.setVisibility(View.GONE);
-            b_text.setText(correct + " / " + size);    //TO:DO
+            b_text.setText(correct + " / " + size);
 
             db.close();
         }else{
@@ -289,12 +313,14 @@ public class CardActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
+        System.out.println("onBackPressed");
         super.onBackPressed();
         db.close();
     }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
+        System.out.println("onSaveInstanceState");
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putBooleanArray("used", used);
         savedInstanceState.putInt("cardId", cardId);
