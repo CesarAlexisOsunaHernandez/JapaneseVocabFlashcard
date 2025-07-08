@@ -31,16 +31,15 @@ public class CardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("onCreate");
         //context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
 
         Table = (String) getIntent().getExtras().get("unit_table");
         Table = Table.replace(' ', '_');
-        E2J = (boolean) getIntent().getExtras().get("E2J");
-        KK = (boolean) getIntent().getExtras().get("KK");
-        NF = (boolean) getIntent().getExtras().get("NF");
+        E2J = (boolean) getIntent().getExtras().get("E2J"); //English To Japanese?
+        KK = (boolean) getIntent().getExtras().get("KK");   //Kanji & Kana?
+        NF = (boolean) getIntent().getExtras().get("NF");   //Normal Font?
 
         databaseHelper = new DatabaseHelper(this);
 
@@ -61,7 +60,7 @@ public class CardActivity extends AppCompatActivity {
         incorrBtn.setVisibility(View.INVISIBLE);
 
         size = (int) DatabaseUtils.queryNumEntries(db, Table);
-        if (size > 0) {
+        if (size > 0) {  //Comprueba que el set no este vacio
             used = new boolean[size];
             correct = 0;
 
@@ -123,7 +122,6 @@ public class CardActivity extends AppCompatActivity {
     }
 
     public void manageCard(View view){
-        System.out.println("manageCard");
         TextView b_text = findViewById(R.id.back);
         TextView f_text = findViewById(R.id.front);
         TextView f2_text = findViewById(R.id.front2);
@@ -138,6 +136,8 @@ public class CardActivity extends AppCompatActivity {
             b_text.setVisibility(View.VISIBLE);
             corrBtn.setVisibility(View.VISIBLE);
             almstBtn.setVisibility(View.VISIBLE);
+            if(KK) //Si se ve kanji y kana, se pone invisible el boton de "almost"
+                almstBtn.setVisibility(View.INVISIBLE);
             incorrBtn.setVisibility(View.VISIBLE);
 
             if (NF){
@@ -172,7 +172,6 @@ public class CardActivity extends AppCompatActivity {
     }
 
     protected void getDatabaseElement(String table){
-        System.out.println("getDatabaseElement");
         try {
             TextView f_text = findViewById(R.id.front);
             TextView f2_text = findViewById(R.id.front2);
@@ -251,7 +250,6 @@ public class CardActivity extends AppCompatActivity {
     }
 
     public void restart(View view){
-        System.out.println("restart");
         TextView againBtn = findViewById(R.id.again);
         againBtn.setVisibility(View.INVISIBLE);
 
@@ -269,7 +267,6 @@ public class CardActivity extends AppCompatActivity {
     }
 
     public void updateScore(View view){
-        System.out.println("updateScore");
         View corrBtn   = findViewById(R.id.correct);
         View almstBtn = findViewById(R.id.almost);
         View incorrBtn = findViewById(R.id.incorrect);
@@ -313,14 +310,12 @@ public class CardActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        System.out.println("onBackPressed");
         super.onBackPressed();
         db.close();
     }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
-        System.out.println("onSaveInstanceState");
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putBooleanArray("used", used);
         savedInstanceState.putInt("cardId", cardId);
