@@ -40,10 +40,19 @@ public class CreateSetActivity extends AppCompatActivity {
 
         if(!tableName.equals("")){
             db = dbh.getReadableDatabase();
-            db.execSQL("CREATE TABLE " + tableName + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, F_TEXT TEXT, K_TEXT TEXT, B_TEXT TEXT);");
+            try{
+                db.execSQL("CREATE TABLE " + tableName + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, F_TEXT TEXT, K_TEXT TEXT, B_TEXT TEXT);");
 
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }catch (Exception e){
+                Toast toast = Toast.makeText(this,"Nombre de set repetido", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+
+        }else{
+            Toast toast = Toast.makeText(this,"Escriba un nombre", Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
 
