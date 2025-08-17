@@ -23,11 +23,13 @@
         android:id="@+id/front2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_marginTop="-15pt"
+        android:layout_marginBottom="-15pt"
         android:layout_gravity="center"
         android:fontFamily="@font/handwritten"
-        android:textSize="40sp"
-        android:text="compu 直す"/>
+        android:gravity="center"
+        android:text="compu 直す"
+        android:textSize="40sp" />
 
     <TextView
         android:id="@+id/front_h"
@@ -36,7 +38,6 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="hiragana 直す"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:fontFamily="@font/average"
         android:textSize="36sp"
         android:visibility="visible" />
@@ -45,9 +46,10 @@
         android:id="@+id/front_h2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="-15pt"
+        android:layout_marginBottom="-15pt"
         android:gravity="center"
         android:layout_gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:fontFamily="@font/handwritten"
         android:textSize="36sp"
         android:text="hiragana　直す"/>
