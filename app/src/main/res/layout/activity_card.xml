@@ -6,7 +6,10 @@
     android:orientation="vertical"
     tools:context=".CardActivity"
     android:onClick="manageCard">
-
+    <!--C.F. == Computer    Front
+        H.F. == Handwritten Front
+        C.B. == Computer    Back
+        H.B. == Handwritten Back-->
     <TextView
         android:id="@+id/front"
         android:layout_width="match_parent"
@@ -14,7 +17,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_marginTop="30dp"
-        android:text="compu 直す"
+        android:text="C.F. 直す言う"
         android:fontFamily="@font/average"
         android:textSize="40sp"
         android:visibility="visible" />
@@ -23,12 +26,10 @@
         android:id="@+id/front2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-15pt"
-        android:layout_marginBottom="-15pt"
         android:layout_gravity="center"
         android:fontFamily="@font/handwritten"
         android:gravity="center"
-        android:text="compu 直す"
+        android:text="H.F. 直す言う"
         android:textSize="40sp" />
 
     <TextView
@@ -37,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="hiragana 直す"
+        android:text="C.B. 直す"
         android:fontFamily="@font/average"
         android:textSize="36sp"
         android:visibility="visible" />
@@ -46,13 +47,11 @@
         android:id="@+id/front_h2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-15pt"
-        android:layout_marginBottom="-15pt"
         android:gravity="center"
         android:layout_gravity="center"
         android:fontFamily="@font/handwritten"
         android:textSize="36sp"
-        android:text="hiragana　直す"/>
+        android:text="H.B.　直す"/>
 
     <TextView
         android:id="@+id/back"

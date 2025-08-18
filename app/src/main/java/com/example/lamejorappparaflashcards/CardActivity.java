@@ -94,18 +94,31 @@ public class CardActivity extends AppCompatActivity {
                     f_text.setText(frontText);
                     f2_text.setText(frontText);
 
-                    if (frontHText.equals(frontText) || !KK)
-                        h_text.setVisibility(View.INVISIBLE);
+                    if (frontHText.equals(frontText) || !KK) {
+                        if(NF){
+                            h_text.setVisibility(View.INVISIBLE);
+                            h2_text.setVisibility(View.GONE);
+                        }else{
+                            h_text.setVisibility(View.GONE);
+                            h2_text.setVisibility(View.INVISIBLE);
+                        }
+                    }
                     h_text.setText(frontHText);
+                    h2_text.setText(frontHText);
 
                     b_text.setVisibility(View.INVISIBLE);
                     b_text.setText(backText);
 
                     if (E2J) {
-                        f_text.setVisibility(View.INVISIBLE);
-                        f2_text.setVisibility(View.INVISIBLE);
-                        h_text.setVisibility(View.INVISIBLE);
-                        b_text.setVisibility(View.VISIBLE);
+                        if(NF){
+                            f_text.setVisibility(View.INVISIBLE);
+                            h_text.setVisibility(View.INVISIBLE);
+                            b_text.setVisibility(View.VISIBLE);
+                        }else{
+                            f2_text.setVisibility(View.INVISIBLE);
+                            h2_text.setVisibility(View.INVISIBLE);
+                            b_text.setVisibility(View.VISIBLE);
+                        }
                     }
 
                     String aux = countUsed() + "/" + used.length;  //Contador de cartas
